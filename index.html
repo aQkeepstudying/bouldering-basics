@@ -29,16 +29,55 @@
     body {
       background: var(--pad);
       color: var(--ink);
-      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-family: "IBM Plex Sans", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
       font-size: 15.5px;
       line-height: 1.5;
       overflow: hidden;
     }
 
+    html[lang="en"] .zh { display: none !important; }
+    html[lang="zh"] .en { display: none !important; }
+
     .app {
+      position: relative;
       display: grid;
       grid-template-columns: 168px 1fr;
       height: 100%;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      background: var(--paper);
+    }
+
+    .lang-switch button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--mute);
+      cursor: pointer;
+      padding: 6px 10px 5px;
+      font: inherit;
+    }
+
+    .lang-switch button.is-on {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .lang-switch .sep {
+      color: var(--mute);
+      padding: 0 1px;
+      pointer-events: none;
     }
 
     aside {
@@ -57,6 +96,7 @@
       letter-spacing: -0.03em;
       line-height: 1.15;
       margin: 0;
+      padding-right: 8px;
     }
 
     nav {
@@ -122,10 +162,11 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin: 0;
+      padding-right: 88px;
     }
 
-    .slide-kicker span {
-      font-family: "IBM Plex Sans", sans-serif;
+    .slide-kicker .hint {
+      font-family: "IBM Plex Sans", "PingFang SC", sans-serif;
       font-weight: 500;
       font-size: 13px;
       color: var(--mute);
@@ -147,11 +188,6 @@
       overflow: hidden;
     }
 
-    .cell.mindset {
-      grid-column: 3;
-      grid-row: 1 / span 2;
-    }
-
     #before .board {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
@@ -162,11 +198,6 @@
       font-size: 14px;
       line-height: 1.42;
       padding: 12px 14px 10px;
-    }
-
-    #before .cell.mindset {
-      grid-column: auto;
-      grid-row: auto;
     }
 
     #basics .board {
@@ -207,35 +238,13 @@
 
     #basics p { margin: 0 0 0.35rem; }
 
-    .formula {
-      font-family: "IBM Plex Sans", sans-serif;
-      font-size: 12.5px;
-      background: #fff;
-      padding: 6px 8px;
-      margin: 0.35rem 0 0;
-    }
-
-    .figs {
-      display: grid;
-      min-height: 0;
-    }
-
-    .figs img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: #fff;
-    }
-
     .q {
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
 
     h2 {
-      font-family: "Bricolage Grotesque", sans-serif;
+      font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
       font-size: 0.98rem;
       letter-spacing: -0.02em;
       margin: 0 0 8px;
@@ -255,8 +264,6 @@
       background: var(--tape-1);
     }
 
-    .mindset .n { background: var(--tape-1); }
-
     ul {
       margin: 0;
       padding: 0 0 0 1.05rem;
@@ -266,35 +273,10 @@
 
     p { margin: 0 0 0.55rem; }
 
-    .scroll {
-      overflow: auto;
-      padding-right: 6px;
-    }
-
     #basics.is-on,
     #skills.is-on {
       grid-template-rows: auto 1fr;
       gap: 10px;
-    }
-
-    .stack {
-      display: grid;
-      gap: 8px;
-      align-content: start;
-    }
-
-    .stack article {
-      background: var(--paper);
-      padding: 12px 14px 8px;
-    }
-
-    .stack h2 { margin-bottom: 6px; }
-
-    .why {
-      border-left: 3px solid var(--tape-2);
-      padding: 1px 0 1px 10px;
-      color: var(--mute);
-      margin: 0 0 0.4rem;
     }
 
     #skills .n { background: var(--tape-3); color: var(--paper); }
@@ -353,196 +335,308 @@
       aside { flex-direction: row; align-items: flex-start; justify-content: space-between; }
       nav { flex-direction: row; flex-wrap: wrap; }
       .board { grid-template-columns: 1fr; grid-template-rows: none; }
-      .cell.mindset,
       #basics .cell.question,
       #skills .holds { grid-column: auto; grid-row: auto; }
-      .figs { grid-template-columns: 1fr; }
-      .figs img { height: auto; }
       .slide { height: auto; }
     }
   </style>
 </head>
 <body>
   <div class="app">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh">中</button>
+      <span class="sep">/</span>
+      <button type="button" data-lang="en" class="is-on">E</button>
+    </div>
+
     <aside>
-      <p class="mark">Introduction to Bouldering</p>
+      <p class="mark">
+        <span class="en">Introduction to Bouldering</span>
+        <span class="zh">抱石基础入门</span>
+      </p>
       <nav>
-        <button type="button" data-slide="before" class="is-on"><strong>1 Before bouldering</strong>Before you climb</button>
-        <button type="button" data-slide="basics"><strong>2 Basics</strong>Efficiency &amp; physics</button>
-        <button type="button" data-slide="skills"><strong>3 Skills</strong>Holds &amp; feet</button>
+        <button type="button" data-slide="before" class="is-on">
+          <strong><span class="en">1 Before bouldering</span><span class="zh">1 攀爬前</span></strong>
+          <span class="en">Before you climb</span><span class="zh">上场之前</span>
+        </button>
+        <button type="button" data-slide="basics">
+          <strong><span class="en">2 Basics</span><span class="zh">2 基本知识</span></strong>
+          <span class="en">Efficiency &amp; physics</span><span class="zh">省力与物理</span>
+        </button>
+        <button type="button" data-slide="skills">
+          <strong><span class="en">3 Skills</span><span class="zh">3 技巧</span></strong>
+          <span class="en">Holds &amp; feet</span><span class="zh">抓法与脚法</span>
+        </button>
       </nav>
     </aside>
 
     <div class="stage">
       <section class="slide is-on" id="before">
-        <p class="slide-kicker">Before bouldering</p>
+        <p class="slide-kicker"><span class="en">Before bouldering</span><span class="zh">攀爬前</span></p>
         <div class="board">
           <article class="cell">
-            <h2><span class="n">1.1</span>Gear — choosing climbing shoes</h2>
-            <ul>
+            <h2><span class="n">1.1</span><span class="en">Gear — choosing climbing shoes</span><span class="zh">装备：选攀岩鞋</span></h2>
+            <ul class="en">
               <li><strong>Size:</strong> beginners should go half a size to one size up, or use their street-shoe size. Your toes should touch the front of the shoe comfortably, without intense pain.</li>
               <li><strong>Why not buy extremely tight shoes?</strong> Extreme tightness is for high-precision edging by advanced climbers. Beginners do not yet have that small-foot-muscle strength, and painful shoes will just make you want to quit.</li>
               <li><strong>What the shoes do:</strong> climbing shoes use sticky rubber that gives far more friction than regular sneakers, so you can stand on holds that look impossible in ordinary shoes.</li>
             </ul>
+            <ul class="zh">
+              <li><strong>尺码：</strong>初学者选大半码到一码，或平日鞋码。脚趾碰到鞋头即可，不要剧痛。</li>
+              <li><strong>为什么不要买特别紧的鞋？</strong>极致贴合是给进阶者做精确踩点用的。初学者脚部小肌群还不够，痛只会让你想放弃。</li>
+              <li><strong>鞋的作用：</strong>攀岩鞋的橡胶摩擦力远高于普通运动鞋，才能踩住看起来不可能的点。</li>
+            </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">1.2</span>Grades and color</h2>
-            <ul>
+            <h2><span class="n">1.2</span><span class="en">Grades and color</span><span class="zh">分级与颜色</span></h2>
+            <ul class="en">
               <li><strong>American bouldering grades:</strong> V0 to V17. The number is only a starting point for how hard a problem feels.</li>
               <li><strong>European bouldering grades:</strong> 4a to 9a.</li>
               <li><strong>If you are a beginner:</strong> start at V0 and add difficulty slowly. Do not jump grades just because a color looks easy.</li>
               <li><strong>Color vs. grade:</strong> holds of the same color are one problem. That color is mapped to a grade, but every gym has its own color chart on the wall — read that chart before you pick a line.</li>
             </ul>
-          </article>
-
-          <article class="cell">
-            <h2><span class="n">1.3</span>How to start and finish</h2>
-            <ul>
-              <li><strong>Read the start tags.</strong> Look for tape or labels on the holds. If there is <em>one</em> tag on a hold, both hands must start there. If there are <em>two</em> tags on different holds, one hand goes on each. Some gyms also tag specific starting footholds.</li>
-              <li>To begin, both feet leave the ground from that start.</li>
-              <li><strong>Finish:</strong> match both hands on the Top hold and keep them there, stably, for two to three seconds — or tap the top marker, if that is how the gym marks a send.</li>
+            <ul class="zh">
+              <li><strong>美式抱石等级：</strong>V0 到 V17。数字只是难度入口，手感还看点、距离和坡度。</li>
+              <li><strong>欧式抱石等级：</strong>4a 到 9a。</li>
+              <li><strong>初学者：</strong>从 V0 开始，慢慢往上加。不要因为某条颜色看起来简单就跳级。</li>
+              <li><strong>颜色与等级：</strong>同一种颜色是一条线路，颜色会对应等级。每个岩馆有自己的颜色说明图，选线前先看图。</li>
             </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">1.4</span>Landing safely</h2>
-            <ul>
+            <h2><span class="n">1.3</span><span class="en">How to start and finish</span><span class="zh">如何开始和结束</span></h2>
+            <ul class="en">
+              <li><strong>Read the start tags.</strong> Look for tape or labels on the holds. If there is <em>one</em> tag on a hold, both hands must start there. If there are <em>two</em> tags on different holds, one hand goes on each. Some gyms also tag specific starting footholds.</li>
+              <li>To begin, both feet leave the ground from that start.</li>
+              <li><strong>Finish:</strong> match both hands on the Top hold and keep them there, stably, for two to three seconds — or tap the top marker, if that is how the gym marks a send.</li>
+            </ul>
+            <ul class="zh">
+              <li><strong>先看起步标记。</strong>找岩点上的胶带或标签。一个点上只有一枚标记：双手都要放在这个点。两个点上各有标记：一手一个。有的岩馆还会标起步脚点。</li>
+              <li>开始时，双脚离开地面。</li>
+              <li><strong>结束：</strong>双手同时抓稳终点（Top），保持两到三秒；或按该馆规则轻拍顶部标记。</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">1.4</span><span class="en">Landing safely</span><span class="zh">安全落地</span></h2>
+            <ul class="en">
               <li><strong>Land on both feet:</strong> keep your feet about shoulder-width apart. That gives you a stable base and makes it less likely you will twist an ankle.</li>
               <li><strong>Bend your knees:</strong> let your knees and hips flex the moment you hit the pad. They are the shock absorbers. Do not keep your legs stiff.</li>
               <li><strong>Tuck your arms:</strong> keep your arms close to your chest, like a bear hug. Do not reach out to catch yourself with your hands — that is how wrists get broken.</li>
               <li><strong>Roll backward:</strong> let your momentum carry you into a smooth roll onto your back and shoulders, so leftover energy leaves the body instead of jamming into one joint.</li>
             </ul>
+            <ul class="zh">
+              <li><strong>双脚落地：</strong>两脚大约与肩同宽，底盘更稳，脚踝不容易扭。</li>
+              <li><strong>弯曲膝盖：</strong>一碰到垫子，膝盖和髋马上屈曲，当作减震。不要把腿绷直。</li>
+              <li><strong>收臂：</strong>手臂靠近胸口，像熊抱。不要伸手去撑地——手腕很容易骨折。</li>
+              <li><strong>向后滚：</strong>顺着惯性滚到后背和肩膀，把剩余力量散掉，而不是砸进某一个关节。</li>
+            </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">1.5</span>Mindset</h2>
-            <p>Bouldering is a dialogue with yourself, not a competition against the person on the next problem.</p>
-            <p>You are solving a physics puzzle: gravity, the wall, and your own body. Everyone’s body is different, so everyone’s beta (the sequence that works) is different. Copying someone taller or stronger is optional, not a rule.</p>
-            <p><strong>Know when to quit.</strong> If your forearms are pumped, or the drop feels unsafe, come down. Safety always comes first. Getting slightly better, slowly, is the whole game.</p>
+            <h2><span class="n">1.5</span><span class="en">Mindset</span><span class="zh">心态</span></h2>
+            <div class="en">
+              <p>Bouldering is a dialogue with yourself, not a competition against the person on the next problem.</p>
+              <p>You are solving a physics puzzle: gravity, the wall, and your own body. Everyone’s body is different, so everyone’s beta (the sequence that works) is different. Copying someone taller or stronger is optional, not a rule.</p>
+              <p><strong>Know when to quit.</strong> If your forearms are pumped, or the drop feels unsafe, come down. Safety always comes first. Getting slightly better, slowly, is the whole game.</p>
+            </div>
+            <div class="zh">
+              <p>攀岩是跟自己对话，不是和旁边那个人比赛。</p>
+              <p>你在解一道物理题：重力、岩壁、自己的身体。每个人体型不同，过法（beta）也不同。可以看别人，但不必照抄更高或更壮的人。</p>
+              <p><strong>及时放弃。</strong>前臂泵死了，或掉落觉得不安全，就下来。安全永远第一。缓慢进步，就是这件事本身。</p>
+            </div>
           </article>
 
           <article class="cell">
-            <h2><span class="n">1.6</span>Before the real climbing</h2>
-            <ul>
+            <h2><span class="n">1.6</span><span class="en">Before the real climbing</span><span class="zh">正式攀爬前</span></h2>
+            <ul class="en">
               <li><strong>Nails:</strong> check your fingernails and trim them. Long nails snag on holds and tear.</li>
               <li><strong>Pockets:</strong> empty your pockets. Keys, phones, and bottles hurt you — and whoever is under you — if you fall.</li>
               <li><strong>Warm up:</strong> always warm up before you climb. Cold fingers and shoulders are easy to injure.</li>
               <li><strong>Read the wall:</strong> before you pull on, look at the problem — where it goes, where you will land if you fall. Do not climb directly above or below someone else.</li>
               <li><strong>Pad etiquette:</strong> when you finish, step off the mats. Do not walk across the pads; they are a landing zone, not a corridor.</li>
             </ul>
+            <ul class="zh">
+              <li><strong>指甲：</strong>先检查，最好修剪。长指甲容易卡在岩点上，把自己撕伤。</li>
+              <li><strong>口袋：</strong>不要装东西。钥匙、手机、水瓶掉下去会伤到自己，也会伤到下面的人。</li>
+              <li><strong>热身：</strong>爬之前一定要热身，避免手指和肩关节损伤。</li>
+              <li><strong>看线：</strong>上手前先观察线路走向、掉落会落在哪。不要爬到别人正上方或正下方。</li>
+              <li><strong>礼仪：</strong>结束后离开垫子。最好不要在垫子上走来走去——垫子是落地用的，不是过道。</li>
+            </ul>
           </article>
         </div>
       </section>
 
       <section class="slide" id="basics">
-        <p class="slide-kicker">Basics <span>efficiency, balance, physics</span></p>
+        <p class="slide-kicker"><span class="en">Basics</span><span class="zh">基本知识</span> <span class="en hint">efficiency, balance, physics</span><span class="zh hint">省力、平衡、物理</span></p>
         <div class="board">
           <article class="cell">
-            <h2><span class="n">2.1</span>Core concepts</h2>
-            <ul>
+            <h2><span class="n">2.1</span><span class="en">Core concepts</span><span class="zh">核心概念</span></h2>
+            <ul class="en">
               <li><strong>Fingers (grip):</strong> change the grip to match the hold. Avoid purely dead-gripping — that floods the forearms with lactic acid very fast.</li>
               <li><strong>Footwork (edging with the toes):</strong> stand on the toe, not the whole flat foot. The toe concentrates weight into high normal force — and friction. A whole foot on a small hold spreads the pressure and slips.</li>
               <li><strong>Arms (keep them straight):</strong> a bent elbow is a fulcrum, so biceps must fight gravity. Straight arms send the load down into the feet.</li>
               <li><strong>Body (hips close to the wall):</strong> glue the hips in. Farther from the wall = a longer lever = a much harder pull.</li>
             </ul>
+            <ul class="zh">
+              <li><strong>手指（抓法）：</strong>按岩点类型调整，避免死死抠住——前臂乳酸会很快灌满。</li>
+              <li><strong>脚法（脚尖踩点）：</strong>用脚尖，不要整只脚掌。脚尖把体重集中到很小的点上，法向力大，摩擦力才大。整脚踩小点会把压力摊开，容易打滑。</li>
+              <li><strong>手臂（尽量打直）：</strong>弯曲时手肘变成支点，二头肌要对抗重力。打直时骨骼像起重机，重力传到脚上。</li>
+              <li><strong>身体（髋靠近墙）：</strong>髋贴墙。离墙越远，力臂越长，手越要死拉。</li>
+            </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">2.2</span>The physics of equilibrium</h2>
-            <p>Climbing is moving from one balanced state to the next.</p>
-            <ul>
+            <h2><span class="n">2.2</span><span class="en">The physics of equilibrium</span><span class="zh">平衡：两点与三点</span></h2>
+            <p class="en">Climbing is moving from one balanced state to the next.</p>
+            <p class="zh">攀岩就是从一个平衡移动到下一个平衡。</p>
+            <ul class="en">
               <li><strong>Diagonal is stable; same-side is tiring.</strong> Right hand + left foot makes a gravitational triangle through your center of mass. Right hand + right foot creates a torque that pulls you off the wall.</li>
               <li><strong>Three-point balance:</strong> three limbs stay on the wall as a base while you shift the center of gravity to the next stance.</li>
               <li><strong>One hand &amp; two feet:</strong> the hand sits directly above the midpoint between the two feet.</li>
               <li><strong>Two hands &amp; one foot:</strong> the foot sits directly below the midpoint between the two hands.</li>
             </ul>
-          </article>
-
-          <article class="cell">
-            <h2><span class="n">2.3</span>How to move</h2>
-            <ul>
-              <li><strong>Static movement:</strong> keep stable contact points, then shift the body slowly and smoothly to the next position. Do not snatch unless the move demands it.</li>
-              <li><strong>Leg drive:</strong> “Hands guide the direction, legs push you forward.” Climbing is not a pull-up contest. The arms only hook you onto the wall. The real power that sends you up is in the legs, which are far stronger than the arms.</li>
+            <ul class="zh">
+              <li><strong>异侧更稳，同侧更累。</strong>右手+左脚穿过重心，形成一个稳定的重力三角。右手+右脚会产生把你拽离墙面的力矩。</li>
+              <li><strong>三点平衡：</strong>四肢里三点固定在墙上作为稳定底座，再移动重心，进入下一个稳定。</li>
+              <li><strong>一手两脚：</strong>手抓的点尽量在两脚中点的正上方。</li>
+              <li><strong>两手一脚：</strong>脚踩的点尽量在双手中点的正下方。</li>
             </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">2.4</span>The components of the lever</h2>
-            <p>Look at climbing through torque: <strong>M = F · r</strong>. Managing these distances is how you save energy.</p>
-            <ul>
+            <h2><span class="n">2.3</span><span class="en">How to move</span><span class="zh">如何移动</span></h2>
+            <ul class="en">
+              <li><strong>Static movement:</strong> keep stable contact points, then shift the body slowly and smoothly to the next position. Do not snatch unless the move demands it.</li>
+              <li><strong>Leg drive:</strong> “Hands guide the direction, legs push you forward.” Climbing is not a pull-up contest. The arms only hook you onto the wall. The real power that sends you up is in the legs, which are far stronger than the arms.</li>
+            </ul>
+            <ul class="zh">
+              <li><strong>静态移动：</strong>保持稳定接触点，再缓慢、平滑地把身体移到下一个位置。除非动作要求，不要乱甩。</li>
+              <li><strong>腿部驱动：</strong>「手引导方向，脚把人往前推。」攀岩不是做引体向上。手只是把你挂在墙上，真正往上送的力量来自腿，腿比手臂强壮得多。</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.4</span><span class="en">The components of the lever</span><span class="zh">杠杆的三要素</span></h2>
+            <p class="en">Look at climbing through torque: <strong>M = F · r</strong>. Managing these distances is how you save energy.</p>
+            <p class="zh">用力矩看攀岩：<strong>M = F · r</strong>。管好这些距离，就是省力。</p>
+            <ul class="en">
               <li><strong>Fulcrum (footholds):</strong> your base of rotation. The more weight you push straight through the big toe, the less work the upper body has to do.</li>
               <li><strong>Load (center of mass):</strong> gravity pulls the hips straight down. Keep the hips close to the wall to shorten the horizontal lever arm — that cuts the outward rotational force pulling you off.</li>
               <li><strong>Effort (handholds):</strong> the hands must make enough counter-torque to keep you on the wall. If the hips sag away, the load’s lever arm grows, and the hands have to pull much harder.</li>
             </ul>
-          </article>
-
-          <article class="cell">
-            <h2><span class="n">2.5</span>Action and reaction</h2>
-            <p>Newton’s third law on the wall: if you press the feet into the holds, the wall pushes back with an equal and opposite normal force.</p>
-            <p>The harder and more decisive the step, the greater that reaction force, and the more friction you can use. A timid tap produces almost no reaction, so the foot skates. Commit the weight into the rubber.</p>
-          </article>
-
-          <article class="cell">
-            <h2><span class="n">2.6</span>Inertia and acceleration</h2>
-            <p>A force produces acceleration. Speed creates distance. Because of inertia, a moving body can arrive at a hold it could not reach while still.</p>
-            <p>To climb up against gravity, arm-pulling alone is not enough. Sequence a continuous acceleration: toes → legs → both hands → one hand.</p>
-            <ul>
-              <li>Pure arm-pulling makes long reaches exhausting.</li>
-              <li><strong>Fix:</strong> toe push → leg drive → hip swing. Use that momentum to swing to distant holds.</li>
+            <ul class="zh">
+              <li><strong>支点（脚点）：</strong>身体旋转的底座。体重越能直接压过大脚趾，上肢就越少干活。</li>
+              <li><strong>载荷（重心）：</strong>重力把髋往下拉。髋贴墙，缩短身体和墙之间的水平力臂，向外把你转离墙的力矩就会变小。</li>
+              <li><strong>施力（手点）：</strong>手必须给出足够的反向力矩才能挂住。髋掉离墙，载荷力臂变长，手就要拉得更狠。</li>
             </ul>
           </article>
 
+          <article class="cell">
+            <h2><span class="n">2.5</span><span class="en">Action and reaction</span><span class="zh">作用力与反作用力</span></h2>
+            <div class="en">
+              <p>Newton’s third law on the wall: if you press the feet into the holds, the wall pushes back with an equal and opposite normal force.</p>
+              <p>The harder and more decisive the step, the greater that reaction force, and the more friction you can use. A timid tap produces almost no reaction, so the foot skates. Commit the weight into the rubber.</p>
+            </div>
+            <div class="zh">
+              <p>墙上的牛顿第三定律：脚往岩点上压，墙就以大小相同、方向相反的法向力推回来。</p>
+              <p>踩得越坚决，反作用力越大，能用的摩擦也越多。轻轻点一下几乎没有反力，脚会滑。把体重交给橡胶。</p>
+            </div>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.6</span><span class="en">Inertia and acceleration</span><span class="zh">惯性与加速度</span></h2>
+            <div class="en">
+              <p>A force produces acceleration. Speed creates distance. Because of inertia, a moving body can arrive at a hold it could not reach while still.</p>
+              <p>To climb up against gravity, arm-pulling alone is not enough. Sequence a continuous acceleration: toes → legs → both hands → one hand.</p>
+              <ul>
+                <li>Pure arm-pulling makes long reaches exhausting.</li>
+                <li><strong>Fix:</strong> toe push → leg drive → hip swing. Use that momentum to swing to distant holds.</li>
+              </ul>
+            </div>
+            <div class="zh">
+              <p>受力就有加速度，速度带来位移。因为惯性，运动中的身体可以够到静止时够不到的点。</p>
+              <p>要对抗重力往上爬，只靠手拉不够。按脚尖 → 腿 → 双手 → 单手做出连续加速。</p>
+              <ul>
+                <li>纯靠手拉，远点会把人抽干。</li>
+                <li><strong>做法：</strong>脚尖推 → 腿发力 → 髋摆。用动量荡到远处的点。</li>
+              </ul>
+            </div>
+          </article>
+
           <article class="cell question">
-            <h2><span class="n">2.7</span>Question</h2>
-            <p class="q">Beginners tend to bend the arms, feel much more tired, and fall off quickly. Why?</p>
-            <p>A bent elbow becomes a new fulcrum. You are no longer one crane from the feet to the hands, so the biceps must produce a large torque against gravity. Forearms pump, then you drop. The figure below is the same lever: hips far from the wall (50 cm) cost about 15 kg per arm; hips in (20 cm) cost about 6 kg. Straight arms + hips in shortens <em>r</em>, so <em>F</em> at the hands collapses.</p>
+            <h2><span class="n">2.7</span><span class="en">Question</span><span class="zh">问题</span></h2>
+            <p class="q en">Beginners tend to bend the arms, feel much more tired, and fall off quickly. Why?</p>
+            <p class="q zh">初学者容易把手臂弯曲，很快觉得更累，然后掉下来。为什么？</p>
+            <p class="en">A bent elbow becomes a new fulcrum. You are no longer one crane from the feet to the hands, so the biceps must produce a large torque against gravity. Forearms pump, then you drop. The figure below is the same lever: hips far from the wall (50 cm) cost about 15 kg per arm; hips in (20 cm) cost about 6 kg. Straight arms + hips in shortens <em>r</em>, so <em>F</em> at the hands collapses.</p>
+            <p class="zh">手臂一弯，手肘就变成新的支点。你不再是从脚到手的一根起重机，二头肌必须用很大的力矩去对抗重力。前臂泵死，人就掉了。下图是同一根杠杆：髋离墙 50 cm，大约每只手 15 kg；髋贴到 20 cm，大约 6 kg。手臂打直、髋贴墙，缩短 <em>r</em>，手上的 <em>F</em> 就会掉下来。</p>
             <img src="images/torque-body.png" alt="Hips far versus hips close: load, pivot, rotational torque, and hand pull." />
           </article>
         </div>
       </section>
 
       <section class="slide" id="skills">
-        <p class="slide-kicker">Skills <span>handholds and footwork</span></p>
+        <p class="slide-kicker"><span class="en">Skills</span><span class="zh">技巧</span> <span class="en hint">handholds and footwork</span><span class="zh hint">抓法与脚法</span></p>
         <div class="board">
           <article class="cell holds">
             <div>
-              <h2><span class="n">3.1</span>Handholds</h2>
-              <ul>
+              <h2><span class="n">3.1</span><span class="en">Handholds</span><span class="zh">岩点与抓法</span></h2>
+              <ul class="en">
                 <li><strong>Jug:</strong> a big, positive hold. Wrap fingers and palm around it — the standard grip.</li>
                 <li><strong>Pinch:</strong> squeeze the hold between the thumb and the other four fingers, like a volume or a rail.</li>
                 <li><strong>Crimp:</strong> fingertips on a small edge, first knuckle flexed. Beginners’ tendons are fragile — use this cautiously.</li>
                 <li><strong>Sloper:</strong> an open-hand on a rounded surface. Keep the pinky side of the palm close to the wall; this is the kindest grip for tendons.</li>
                 <li><strong>Pocket:</strong> two or three fingers in a hole. <strong>Mono</strong> is a one-finger pocket — easy to injure. <strong>Jib:</strong> a tiny chip; often a foot, sometimes a desperate hand.</li>
               </ul>
+              <ul class="zh">
+                <li><strong>Jug 深点：</strong>好抓的大点。手指和手掌包住，就是标准的握。</li>
+                <li><strong>Pinch 捏点：</strong>拇指对另外四指，把体积块或横条捏住。</li>
+                <li><strong>Crimp 抠点：</strong>指尖抠小沿，第一指关节弯曲。初学者肌腱脆弱，慎用。</li>
+                <li><strong>Sloper 斜面：</strong>开放手抓圆弧面。手掌小指一侧贴近岩壁，对肌腱最友好。</li>
+                <li><strong>Pocket 洞：</strong>两三根手指伸进洞里。<strong>Mono</strong> 是单指洞，很容易伤。<strong>Jib</strong> 是很小的凸起，多当脚点，偶尔当救命手。</li>
+              </ul>
             </div>
             <img src="images/holds.jpg" alt="Hold types: jug, pinch, crimp, sloper, pocket, jib, and mono, with matching hand positions." />
           </article>
 
           <article class="cell foot">
-            <h2><span class="n">3.2</span>Edging</h2>
-            <ul>
+            <h2><span class="n">3.2</span><span class="en">Edging</span><span class="zh">脚尖踩点 Edging</span></h2>
+            <ul class="en">
               <li>Stand on the inside edge of the forefoot, under the big and second toe — the stiffest rubber.</li>
               <li>Keep the ankle vertical, like a ballerina. Do not roll it in or out.</li>
               <li>Look at the foothold first, then place the foot. Never blind-foot.</li>
+            </ul>
+            <ul class="zh">
+              <li>用前脚掌内侧（大脚趾和二脚趾之间）踩点，那是鞋底最硬、最灵敏的区域。</li>
+              <li>脚踝尽量直立，像芭蕾，不要内外翻。</li>
+              <li>先看准脚点再落脚，不要盲踩。</li>
             </ul>
             <img src="images/edging.png" alt="Edging: the inside edge of the climbing shoe on a small foothold." />
           </article>
 
           <article class="cell foot">
-            <h2>Heel down</h2>
-            <ul>
+            <h2><span class="en">Heel down</span><span class="zh">脚跟下沉</span></h2>
+            <ul class="en">
               <li>After you place the foot, drop the heel so more rubber sits on the hold.</li>
               <li>Weight goes onto the skeleton and the shoe; hips come into the wall; the arms get a rest.</li>
+            </ul>
+            <ul class="zh">
+              <li>踩上之后主动把脚跟压下去，让更多橡胶贴住岩点。</li>
+              <li>体重交给骨骼和鞋底，髋靠近墙，手臂得以休息。</li>
             </ul>
             <img src="images/heel-down.jpg" alt="Heel down: the heel weighted on a volume to pull the body into the wall." />
           </article>
 
           <article class="cell foot">
-            <h2>Smear</h2>
-            <ul>
+            <h2><span class="en">Smear</span><span class="zh">抹点 Smear</span></h2>
+            <ul class="en">
               <li>When there is no distinct foothold, press the whole sole onto the blank wall.</li>
               <li>Keep the core tight, and keep pushing down and back so friction does not break.</li>
+            </ul>
+            <ul class="zh">
+              <li>没有明显脚点时，把整只鞋底平贴在光滑岩面上。</li>
+              <li>核心收紧，持续向下、向后压，才能保住摩擦。</li>
             </ul>
             <img src="images/smear.png" alt="Smearing: the whole sole pressed into a smooth wall for friction." />
           </article>
@@ -554,18 +648,40 @@
   <script>
     const buttons = [...document.querySelectorAll("nav button")];
     const slides = [...document.querySelectorAll(".slide")];
+    const langBtns = [...document.querySelectorAll(".lang-switch button")];
+    const titles = {
+      en: "Introduction to Bouldering",
+      zh: "抱石基础入门",
+    };
+
     function show(id) {
       const ok = slides.some((s) => s.id === id);
       const target = ok ? id : "before";
       buttons.forEach((b) => b.classList.toggle("is-on", b.dataset.slide === target));
       slides.forEach((s) => s.classList.toggle("is-on", s.id === target));
     }
+
+    function setLang(lang) {
+      const next = lang === "zh" ? "zh" : "en";
+      document.documentElement.lang = next;
+      document.title = titles[next];
+      langBtns.forEach((b) => b.classList.toggle("is-on", b.dataset.lang === next));
+      try { localStorage.setItem("lang", next); } catch (e) {}
+    }
+
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         show(btn.dataset.slide);
         history.replaceState(null, "", "#" + btn.dataset.slide);
       });
     });
+    langBtns.forEach((btn) => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    let startLang = "en";
+    try { startLang = localStorage.getItem("lang") || "en"; } catch (e) {}
+    setLang(startLang);
     show(location.hash.slice(1));
   </script>
 </body>
