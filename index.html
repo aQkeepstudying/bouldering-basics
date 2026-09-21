@@ -29,10 +29,12 @@
     body {
       background: var(--pad);
       color: var(--ink);
-      font-family: "IBM Plex Sans", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
       font-size: 15.5px;
       line-height: 1.5;
       overflow: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     html[lang="en"] .zh { display: none !important; }
@@ -90,7 +92,7 @@
     }
 
     .mark {
-      font-family: "Bricolage Grotesque", sans-serif;
+      font-family: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", sans-serif;
       font-weight: 700;
       font-size: 1.22rem;
       letter-spacing: -0.03em;
@@ -121,7 +123,7 @@
 
     nav button strong {
       display: block;
-      font-family: "Bricolage Grotesque", sans-serif;
+      font-family: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", sans-serif;
       font-size: 0.95rem;
       color: var(--ink);
     }
@@ -157,7 +159,7 @@
     }
 
     .slide-kicker {
-      font-family: "Bricolage Grotesque", sans-serif;
+      font-family: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -244,7 +246,7 @@
     }
 
     h2 {
-      font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
+      font-family: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
       font-size: 0.98rem;
       letter-spacing: -0.02em;
       margin: 0 0 8px;
@@ -329,15 +331,112 @@
 
     #skills ul { flex: 0 0 auto; }
 
-    @media (max-width: 900px) {
-      body { overflow: auto; }
-      .app { grid-template-columns: 1fr; height: auto; min-height: 100%; }
-      aside { flex-direction: row; align-items: flex-start; justify-content: space-between; }
-      nav { flex-direction: row; flex-wrap: wrap; }
-      .board { grid-template-columns: 1fr; grid-template-rows: none; }
+    @media (max-width: 1100px), (hover: none) and (pointer: coarse) {
+      html, body {
+        height: auto !important;
+        min-height: 100%;
+        overflow: auto !important;
+      }
+
+      .app {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        min-height: 100%;
+      }
+
+      .lang-switch {
+        position: static;
+        align-self: flex-end;
+        flex: 0 0 auto;
+        margin: 10px 12px 0;
+      }
+
+      aside {
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 8px 14px 12px;
+        border-right: 0;
+        border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+      }
+
+      .mark {
+        font-size: 1.35rem;
+        padding-right: 0;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      nav button {
+        width: 100%;
+      }
+
+      .stage {
+        height: auto;
+        padding: 12px;
+      }
+
+      .slide,
+      .slide.is-on,
+      #before.is-on,
+      #basics.is-on,
+      #skills.is-on {
+        height: auto;
+        grid-template-rows: none;
+      }
+
+      .slide.is-on { display: flex; flex-direction: column; }
+
+      .slide-kicker { padding-right: 0; }
+
+      .board,
+      #before .board,
+      #basics .board,
+      #skills .board {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-flow: row;
+      }
+
+      .cell,
+      #before .cell,
+      #basics .cell,
+      #skills .cell,
+      #basics .cell.question {
+        overflow: visible;
+        height: auto;
+        flex: none;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
       #basics .cell.question,
-      #skills .holds { grid-column: auto; grid-row: auto; }
-      .slide { height: auto; }
+      #skills .holds {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      #skills .holds {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #skills .holds img,
+      #skills .foot img,
+      #basics .cell.question img {
+        flex: none;
+        height: auto;
+        max-height: 280px;
+        width: 100%;
+        object-fit: contain;
+      }
     }
   </style>
 </head>
@@ -679,10 +778,14 @@
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
 
-    let startLang = "en";
-    try { startLang = localStorage.getItem("lang") || "en"; } catch (e) {}
-    setLang(startLang);
+    let startLang = "";
+    try { startLang = localStorage.getItem("lang") || ""; } catch (e) {}
+    const qLang = new URLSearchParams(location.search).get("lang");
+    if (qLang === "zh" || qLang === "en") startLang = qLang;
+    else if (!startLang && /^zh\b/i.test(navigator.language || navigator.userLanguage || "")) startLang = "zh";
+    setLang(startLang || "en");
     show(location.hash.slice(1));
+    window.scrollTo(0, 0);
   </script>
 </body>
 </html>
