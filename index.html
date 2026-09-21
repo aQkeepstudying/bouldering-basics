@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introduction to Bouldering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pad: #dfe6dc;
+      --ink: #1a221c;
+      --mute: #4a574e;
+      --paper: #f4f7f2;
+      --tape-1: #e0b429;
+      --tape-2: #3d7ea6;
+      --tape-3: #b84d6f;
+      --rubber: #3d2a24;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--pad);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.5;
+      overflow: hidden;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 168px 1fr;
+      height: 100%;
+    }
+
+    aside {
+      background: color-mix(in srgb, var(--ink) 6%, var(--pad));
+      padding: 22px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      border-right: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+    }
+
+    .mark {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 700;
+      font-size: 1.22rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    nav button {
+      appearance: none;
+      border: 0;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.25;
+      padding: 10px 10px 9px;
+      background: transparent;
+      color: var(--mute);
+    }
+
+    nav button strong {
+      display: block;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    nav button.is-on {
+      color: var(--rubber);
+    }
+
+    nav button[data-slide="before"].is-on { background: var(--tape-1); }
+    nav button[data-slide="basics"].is-on { background: var(--tape-2); color: var(--paper); }
+    nav button[data-slide="basics"].is-on strong { color: var(--paper); }
+    nav button[data-slide="skills"].is-on { background: var(--tape-3); color: var(--paper); }
+    nav button[data-slide="skills"].is-on strong { color: var(--paper); }
+
+    .stage {
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      padding: 18px 18px 16px;
+    }
+
+    .slide {
+      display: none;
+      height: 100%;
+      min-height: 0;
+    }
+
+    .slide.is-on { display: grid; }
+
+    #before.is-on {
+      grid-template-rows: auto 1fr;
+      gap: 12px;
+    }
+
+    .slide-kicker {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .slide-kicker span {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--mute);
+      margin-left: 8px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: 1fr 1fr minmax(190px, 0.78fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .cell {
+      background: var(--paper);
+      padding: 16px 18px 14px;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .cell.mindset {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+    }
+
+    #basics .board {
+      grid-template-columns: 1fr 1fr minmax(230px, 0.9fr);
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-auto-flow: column;
+    }
+
+    #basics .cell {
+      font-size: 13.5px;
+      line-height: 1.38;
+      padding: 8px 11px 7px;
+      overflow: hidden;
+    }
+
+    #basics .cell.question {
+      grid-column: 3;
+      grid-row: 1 / span 3;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #basics .cell.question img {
+      display: block;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      margin-top: 8px;
+      object-fit: contain;
+      object-position: center top;
+      background: #fff;
+    }
+
+    #basics h2 { font-size: 0.9rem; margin-bottom: 6px; }
+
+    #basics li { margin: 0 0 0.32rem; }
+
+    #basics p { margin: 0 0 0.35rem; }
+
+    .formula {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 12.5px;
+      background: #fff;
+      padding: 6px 8px;
+      margin: 0.35rem 0 0;
+    }
+
+    .figs {
+      display: grid;
+      min-height: 0;
+    }
+
+    .figs img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+    }
+
+    .q {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+
+    .n {
+      display: inline-block;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px 1px;
+      margin-right: 6px;
+      vertical-align: 1px;
+      background: var(--tape-1);
+    }
+
+    .mindset .n { background: var(--tape-1); }
+
+    ul {
+      margin: 0;
+      padding: 0 0 0 1.05rem;
+    }
+
+    li { margin: 0 0 0.5rem; }
+
+    p { margin: 0 0 0.55rem; }
+
+    .scroll {
+      overflow: auto;
+      padding-right: 6px;
+    }
+
+    #basics.is-on,
+    #skills.is-on {
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .stack article {
+      background: var(--paper);
+      padding: 12px 14px 8px;
+    }
+
+    .stack h2 { margin-bottom: 6px; }
+
+    .why {
+      border-left: 3px solid var(--tape-2);
+      padding: 1px 0 1px 10px;
+      color: var(--mute);
+      margin: 0 0 0.4rem;
+    }
+
+    #skills .n { background: var(--tape-3); color: var(--paper); }
+    #basics .n { background: var(--tape-2); color: var(--paper); }
+
+    #skills .board {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1.15fr 1fr;
+    }
+
+    #skills .cell {
+      font-size: 13.5px;
+      line-height: 1.4;
+      padding: 10px 12px 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    #skills .holds {
+      grid-column: 1 / span 3;
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 12px;
+    }
+
+    #skills .holds img,
+    #skills .foot img {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      object-fit: contain;
+      background: #1a221c;
+    }
+
+    #skills .holds img {
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    #skills .foot img {
+      flex: 1;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    #skills .foot h2 { margin-bottom: 6px; }
+
+    #skills ul { flex: 0 0 auto; }
+
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .app { grid-template-columns: 1fr; height: auto; min-height: 100%; }
+      aside { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+      nav { flex-direction: row; flex-wrap: wrap; }
+      .board { grid-template-columns: 1fr; grid-template-rows: none; }
+      .cell.mindset,
+      #basics .cell.question,
+      #skills .holds { grid-column: auto; grid-row: auto; }
+      .figs { grid-template-columns: 1fr; }
+      .figs img { height: auto; }
+      .slide { height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <p class="mark">Introduction to Bouldering</p>
+      <nav>
+        <button type="button" data-slide="before" class="is-on"><strong>1 Before bouldering</strong>Before you climb</button>
+        <button type="button" data-slide="basics"><strong>2 Basics</strong>Efficiency &amp; physics</button>
+        <button type="button" data-slide="skills"><strong>3 Skills</strong>Holds &amp; feet</button>
+      </nav>
+    </aside>
+
+    <div class="stage">
+      <section class="slide is-on" id="before">
+        <p class="slide-kicker">Before bouldering</p>
+        <div class="board">
+          <article class="cell">
+            <h2><span class="n">1.1</span>Gear — choosing climbing shoes</h2>
+            <ul>
+              <li><strong>Size:</strong> beginners should go half a size to one size up, or use their street-shoe size. Your toes should touch the front of the shoe comfortably, without intense pain.</li>
+              <li><strong>Why not buy extremely tight shoes?</strong> Extreme tightness is for high-precision edging by advanced climbers. Beginners do not yet have that small-foot-muscle strength, and painful shoes will just make you want to quit.</li>
+              <li><strong>What the shoes do:</strong> climbing shoes use sticky rubber that gives far more friction than regular sneakers, so you can stand on holds that look impossible in ordinary shoes.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">1.2</span>Grades and color</h2>
+            <ul>
+              <li><strong>American bouldering grades:</strong> V0 to V17. The number is only a starting point for how hard a problem feels.</li>
+              <li><strong>European bouldering grades:</strong> 4a to 9a.</li>
+              <li><strong>If you are a beginner:</strong> start at V0 and add difficulty slowly. Do not jump grades just because a color looks easy.</li>
+              <li><strong>Color vs. grade:</strong> holds of the same color are one problem. That color is mapped to a grade, but every gym has its own color chart on the wall — read that chart before you pick a line.</li>
+            </ul>
+          </article>
+
+          <article class="cell mindset">
+            <h2><span class="n">1.5</span>Mindset</h2>
+            <p>Bouldering is a dialogue with yourself, not a competition against the person on the next problem.</p>
+            <p>You are solving a physics puzzle: gravity, the wall, and your own body. Everyone’s body is different, so everyone’s beta (the sequence that works) is different. Copying someone taller or stronger is optional, not a rule.</p>
+            <p><strong>Know when to quit.</strong> If your forearms are pumped, or the drop feels unsafe, come down. Safety always comes first. Getting slightly better, slowly, is the whole game.</p>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">1.3</span>How to start and finish</h2>
+            <ul>
+              <li><strong>Read the start tags.</strong> Look for tape or labels on the holds. If there is <em>one</em> tag on a hold, both hands must start there. If there are <em>two</em> tags on different holds, one hand goes on each. Some gyms also tag specific starting footholds.</li>
+              <li>To begin, both feet leave the ground from that start.</li>
+              <li><strong>Finish:</strong> match both hands on the Top hold and keep them there, stably, for two to three seconds — or tap the top marker, if that is how the gym marks a send.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">1.4</span>Landing safely</h2>
+            <ul>
+              <li><strong>Land on both feet:</strong> keep your feet about shoulder-width apart. That gives you a stable base and makes it less likely you will twist an ankle.</li>
+              <li><strong>Bend your knees:</strong> let your knees and hips flex the moment you hit the pad. They are the shock absorbers. Do not keep your legs stiff.</li>
+              <li><strong>Tuck your arms:</strong> keep your arms close to your chest, like a bear hug. Do not reach out to catch yourself with your hands — that is how wrists get broken.</li>
+              <li><strong>Roll backward:</strong> let your momentum carry you into a smooth roll onto your back and shoulders, so leftover energy leaves the body instead of jamming into one joint.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="basics">
+        <p class="slide-kicker">Basics <span>efficiency, balance, physics</span></p>
+        <div class="board">
+          <article class="cell">
+            <h2><span class="n">2.1</span>Core concepts</h2>
+            <ul>
+              <li><strong>Fingers (grip):</strong> change the grip to match the hold. Avoid purely dead-gripping — that floods the forearms with lactic acid very fast.</li>
+              <li><strong>Footwork (edging with the toes):</strong> stand on the toe, not the whole flat foot. The toe concentrates weight into high normal force — and friction. A whole foot on a small hold spreads the pressure and slips.</li>
+              <li><strong>Arms (keep them straight):</strong> a bent elbow is a fulcrum, so biceps must fight gravity. Straight arms send the load down into the feet.</li>
+              <li><strong>Body (hips close to the wall):</strong> glue the hips in. Farther from the wall = a longer lever = a much harder pull.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.2</span>The physics of equilibrium</h2>
+            <p>Climbing is moving from one balanced state to the next.</p>
+            <ul>
+              <li><strong>Diagonal is stable; same-side is tiring.</strong> Right hand + left foot makes a gravitational triangle through your center of mass. Right hand + right foot creates a torque that pulls you off the wall.</li>
+              <li><strong>Three-point balance:</strong> three limbs stay on the wall as a base while you shift the center of gravity to the next stance.</li>
+              <li><strong>One hand &amp; two feet:</strong> the hand sits directly above the midpoint between the two feet.</li>
+              <li><strong>Two hands &amp; one foot:</strong> the foot sits directly below the midpoint between the two hands.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.3</span>How to move</h2>
+            <ul>
+              <li><strong>Static movement:</strong> keep stable contact points, then shift the body slowly and smoothly to the next position. Do not snatch unless the move demands it.</li>
+              <li><strong>Leg drive:</strong> “Hands guide the direction, legs push you forward.” Climbing is not a pull-up contest. The arms only hook you onto the wall. The real power that sends you up is in the legs, which are far stronger than the arms.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.4</span>The components of the lever</h2>
+            <p>Look at climbing through torque: <strong>M = F · r</strong>. Managing these distances is how you save energy.</p>
+            <ul>
+              <li><strong>Fulcrum (footholds):</strong> your base of rotation. The more weight you push straight through the big toe, the less work the upper body has to do.</li>
+              <li><strong>Load (center of mass):</strong> gravity pulls the hips straight down. Keep the hips close to the wall to shorten the horizontal lever arm — that cuts the outward rotational force pulling you off.</li>
+              <li><strong>Effort (handholds):</strong> the hands must make enough counter-torque to keep you on the wall. If the hips sag away, the load’s lever arm grows, and the hands have to pull much harder.</li>
+            </ul>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.5</span>Action and reaction</h2>
+            <p>Newton’s third law on the wall: if you press the feet into the holds, the wall pushes back with an equal and opposite normal force.</p>
+            <p>The harder and more decisive the step, the greater that reaction force, and the more friction you can use. A timid tap produces almost no reaction, so the foot skates. Commit the weight into the rubber.</p>
+          </article>
+
+          <article class="cell">
+            <h2><span class="n">2.6</span>Inertia and acceleration</h2>
+            <p>A force produces acceleration. Speed creates distance. Because of inertia, a moving body can arrive at a hold it could not reach while still.</p>
+            <p>To climb up against gravity, arm-pulling alone is not enough. Sequence a continuous acceleration: toes → legs → both hands → one hand.</p>
+            <ul>
+              <li>Pure arm-pulling makes long reaches exhausting.</li>
+              <li><strong>Fix:</strong> toe push → leg drive → hip swing. Use that momentum to swing to distant holds.</li>
+            </ul>
+          </article>
+
+          <article class="cell question">
+            <h2><span class="n">2.7</span>Question</h2>
+            <p class="q">Beginners tend to bend the arms, feel much more tired, and fall off quickly. Why?</p>
+            <p>A bent elbow becomes a new fulcrum. You are no longer one crane from the feet to the hands, so the biceps must produce a large torque against gravity. Forearms pump, then you drop. The figure below is the same lever: hips far from the wall (50 cm) cost about 15 kg per arm; hips in (20 cm) cost about 6 kg. Straight arms + hips in shortens <em>r</em>, so <em>F</em> at the hands collapses.</p>
+            <img src="images/torque-body.png" alt="Hips far versus hips close: load, pivot, rotational torque, and hand pull." />
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="skills">
+        <p class="slide-kicker">Skills <span>handholds and footwork</span></p>
+        <div class="board">
+          <article class="cell holds">
+            <div>
+              <h2><span class="n">3.1</span>Handholds</h2>
+              <ul>
+                <li><strong>Jug:</strong> a big, positive hold. Wrap fingers and palm around it — the standard grip.</li>
+                <li><strong>Pinch:</strong> squeeze the hold between the thumb and the other four fingers, like a volume or a rail.</li>
+                <li><strong>Crimp:</strong> fingertips on a small edge, first knuckle flexed. Beginners’ tendons are fragile — use this cautiously.</li>
+                <li><strong>Sloper:</strong> an open-hand on a rounded surface. Keep the pinky side of the palm close to the wall; this is the kindest grip for tendons.</li>
+                <li><strong>Pocket:</strong> two or three fingers in a hole. <strong>Mono</strong> is a one-finger pocket — easy to injure. <strong>Jib:</strong> a tiny chip; often a foot, sometimes a desperate hand.</li>
+              </ul>
+            </div>
+            <img src="images/holds.jpg" alt="Hold types: jug, pinch, crimp, sloper, pocket, jib, and mono, with matching hand positions." />
+          </article>
+
+          <article class="cell foot">
+            <h2><span class="n">3.2</span>Edging</h2>
+            <ul>
+              <li>Stand on the inside edge of the forefoot, under the big and second toe — the stiffest rubber.</li>
+              <li>Keep the ankle vertical, like a ballerina. Do not roll it in or out.</li>
+              <li>Look at the foothold first, then place the foot. Never blind-foot.</li>
+            </ul>
+            <img src="images/edging.png" alt="Edging: the inside edge of the climbing shoe on a small foothold." />
+          </article>
+
+          <article class="cell foot">
+            <h2>Heel down</h2>
+            <ul>
+              <li>After you place the foot, drop the heel so more rubber sits on the hold.</li>
+              <li>Weight goes onto the skeleton and the shoe; hips come into the wall; the arms get a rest.</li>
+            </ul>
+            <img src="images/heel-down.jpg" alt="Heel down: the heel weighted on a volume to pull the body into the wall." />
+          </article>
+
+          <article class="cell foot">
+            <h2>Smear</h2>
+            <ul>
+              <li>When there is no distinct foothold, press the whole sole onto the blank wall.</li>
+              <li>Keep the core tight, and keep pushing down and back so friction does not break.</li>
+            </ul>
+            <img src="images/smear.png" alt="Smearing: the whole sole pressed into a smooth wall for friction." />
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const buttons = [...document.querySelectorAll("nav button")];
+    const slides = [...document.querySelectorAll(".slide")];
+    function show(id) {
+      const ok = slides.some((s) => s.id === id);
+      const target = ok ? id : "before";
+      buttons.forEach((b) => b.classList.toggle("is-on", b.dataset.slide === target));
+      slides.forEach((s) => s.classList.toggle("is-on", s.id === target));
+    }
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        show(btn.dataset.slide);
+        history.replaceState(null, "", "#" + btn.dataset.slide);
+      });
+    });
+    show(location.hash.slice(1));
+  </script>
+</body>
+</html>
