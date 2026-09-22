@@ -13,6 +13,7 @@
       --tape-1: #e0b429;
       --tape-2: #3d7ea6;
       --tape-3: #b84d6f;
+      --tape-4: #5c7a4a;
       --rubber: #3d2a24;
       --safe-b: env(safe-area-inset-bottom, 0px);
       --safe-t: env(safe-area-inset-top, 0px);
@@ -128,6 +129,7 @@
 
     #basics .n { background: var(--tape-2); color: var(--paper); }
     #skills .n { background: var(--tape-3); color: var(--paper); }
+    #notes .n { background: var(--tape-4); color: var(--paper); }
 
     .why {
       list-style: none;
@@ -241,6 +243,14 @@
       background: #fff;
     }
 
+    #notes .card.split {
+      grid-template-columns: 1fr;
+    }
+
+    #notes .card.split img {
+      max-height: none;
+    }
+
     .pair { margin: 0 0 0.2rem; }
     .lab {
       font-weight: 700;
@@ -316,7 +326,7 @@
       bottom: 0;
       z-index: 8;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 6px;
       padding: 8px 10px calc(8px + var(--safe-b));
       background: color-mix(in srgb, var(--ink) 8%, var(--pad));
@@ -327,11 +337,11 @@
       appearance: none;
       border: 0;
       min-height: 52px;
-      padding: 8px 6px 7px;
+      padding: 8px 4px 7px;
       background: transparent;
       color: var(--mute);
       font: inherit;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       line-height: 1.2;
       text-align: center;
@@ -349,6 +359,8 @@
     .tabs button.is-on[data-sheet="basics"] strong { color: var(--paper); }
     .tabs button.is-on[data-sheet="skills"] { background: var(--tape-3); color: var(--paper); }
     .tabs button.is-on[data-sheet="skills"] strong { color: var(--paper); }
+    .tabs button.is-on[data-sheet="notes"] { background: var(--tape-4); color: var(--paper); }
+    .tabs button.is-on[data-sheet="notes"] strong { color: var(--paper); }
   </style>
 </head>
 <body>
@@ -655,7 +667,7 @@
     </section>
 
     <section class="sheet" id="skills">
-      <p class="kicker"><span class="en">3 · Holds, feet, and extra notes</span><span class="zh">3 · 抓法、脚法，随时记笔记</span></p>
+      <p class="kicker"><span class="en">3 · Handholds and footwork</span><span class="zh">3 · 抓法与脚法</span></p>
 
       <article class="card">
         <h2><span class="n">3.1</span><span class="en">Handholds</span><span class="zh">岩点与抓法</span></h2>
@@ -716,10 +728,14 @@
         </ul>
         <img src="images/smear.png" alt="Smearing: the whole sole pressed into a smooth wall for friction." />
       </article>
+    </section>
+
+    <section class="sheet" id="notes">
+      <p class="kicker"><span class="en">4 · Extra notes</span><span class="zh">4 · 进阶笔记</span></p>
 
       <article class="card split">
         <div class="copy">
-          <h2><span class="n">3.3</span><span class="en">Heel hook</span><span class="zh">挂脚 Heel Hook</span></h2>
+          <h2><span class="n">4.1</span><span class="en">Heel hook</span><span class="zh">挂脚 Heel Hook</span></h2>
           <ol class="why letters">
             <li>
               <strong class="en">What it is</strong>
@@ -744,7 +760,7 @@
 
       <article class="card split">
         <div class="copy">
-          <h2><span class="n">3.4</span><span class="en">Drop knee</span><span class="zh">拧膝 Drop Knee</span></h2>
+          <h2><span class="n">4.2</span><span class="en">Drop knee</span><span class="zh">拧膝 Drop Knee</span></h2>
           <ol class="why letters">
             <li>
               <strong class="en">What it is</strong>
@@ -781,6 +797,10 @@
     <button type="button" data-sheet="skills">
       <strong><span class="en">3 Skills</span><span class="zh">3 技巧</span></strong>
       <span class="en">holds &amp; feet</span><span class="zh">抓法与脚法</span>
+    </button>
+    <button type="button" data-sheet="notes">
+      <strong><span class="en">4 Notes</span><span class="zh">4 笔记</span></strong>
+      <span class="en">heel &amp; knee</span><span class="zh">挂脚拧膝</span>
     </button>
   </nav>
 

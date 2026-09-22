@@ -16,6 +16,7 @@
       --tape-1: #e0b429;
       --tape-2: #3d7ea6;
       --tape-3: #b84d6f;
+      --tape-4: #5c7a4a;
       --rubber: #3d2a24;
     }
 
@@ -137,6 +138,8 @@
     nav button[data-slide="basics"].is-on strong { color: var(--paper); }
     nav button[data-slide="skills"].is-on { background: var(--tape-3); color: var(--paper); }
     nav button[data-slide="skills"].is-on strong { color: var(--paper); }
+    nav button[data-slide="notes"].is-on { background: var(--tape-4); color: var(--paper); }
+    nav button[data-slide="notes"].is-on strong { color: var(--paper); }
 
     .stage {
       min-width: 0;
@@ -453,17 +456,19 @@
     }
 
     #basics.is-on,
-    #skills.is-on {
+    #skills.is-on,
+    #notes.is-on {
       grid-template-rows: auto 1fr;
       gap: 10px;
     }
 
     #skills .n { background: var(--tape-3); color: var(--paper); }
     #basics .n { background: var(--tape-2); color: var(--paper); }
+    #notes .n { background: var(--tape-4); color: var(--paper); }
 
     #skills .board {
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: 0.9fr 0.62fr 1.22fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1.15fr 1fr;
     }
 
     #skills .cell {
@@ -477,34 +482,14 @@
     }
 
     #skills .holds {
-      grid-column: 1 / -1;
+      grid-column: 1 / span 3;
       display: grid;
       grid-template-columns: 0.78fr 1.22fr;
       gap: 12px;
     }
 
-    #skills .foot { grid-column: span 2; }
-
-    #skills .adv {
-      grid-column: span 3;
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(140px, 1.08fr);
-      gap: 8px;
-      align-items: start;
-      font-size: 11.6px;
-      line-height: 1.26;
-      overflow: auto;
-    }
-
-    #skills .adv .copy { min-width: 0; }
-
-    #skills .adv h2 { font-size: 0.86rem; margin-bottom: 4px; }
-
-    #skills .adv .why { font-size: 11.4px; }
-
     #skills .holds img,
-    #skills .foot img,
-    #skills .adv img {
+    #skills .foot img {
       display: block;
       width: 100%;
       min-height: 0;
@@ -524,18 +509,42 @@
       object-position: center;
     }
 
-    #skills .adv img {
-      height: auto;
-      max-height: 100%;
-      object-fit: contain;
-      object-position: center top;
-      background: #fff;
-      align-self: stretch;
-    }
-
     #skills .foot h2 { margin-bottom: 6px; }
 
     #skills ul { flex: 0 0 auto; }
+
+    #notes .board {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    #notes .cell {
+      font-size: 12.4px;
+      line-height: 1.32;
+      padding: 10px 12px 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(220px, 1.1fr);
+      gap: 12px;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    #notes .copy { min-width: 0; }
+
+    #notes h2 { font-size: 0.92rem; margin-bottom: 6px; }
+
+    #notes .why { font-size: 12.2px; line-height: 1.3; }
+
+    #notes img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+    }
 
     @media (max-width: 1100px), (hover: none) and (pointer: coarse) {
       html, body {
@@ -591,7 +600,8 @@
       .slide.is-on,
       #before.is-on,
       #basics.is-on,
-      #skills.is-on {
+      #skills.is-on,
+      #notes.is-on {
         height: auto;
         grid-template-rows: none;
       }
@@ -603,7 +613,8 @@
       .board,
       #before .board,
       #basics .board,
-      #skills .board {
+      #skills .board,
+      #notes .board {
         display: flex;
         flex-direction: column;
         grid-template-columns: 1fr;
@@ -615,6 +626,7 @@
       #before .cell,
       #basics .cell,
       #skills .cell,
+      #notes .cell,
       #basics .cell.question {
         overflow: visible;
         height: auto;
@@ -679,7 +691,7 @@
         flex-direction: column;
       }
 
-      #skills .adv {
+      #notes .cell {
         display: flex;
         flex-direction: column;
         grid-column: auto;
@@ -687,7 +699,7 @@
 
       #skills .holds img,
       #skills .foot img,
-      #skills .adv img,
+      #notes img,
       #basics .cell.question img {
         flex: none;
         height: auto;
@@ -723,6 +735,10 @@
         <button type="button" data-slide="skills">
           <strong><span class="en">3 Skills</span><span class="zh">3 技巧</span></strong>
           <span class="en">Holds &amp; feet</span><span class="zh">抓法与脚法</span>
+        </button>
+        <button type="button" data-slide="notes">
+          <strong><span class="en">4 Extra notes</span><span class="zh">4 进阶笔记</span></strong>
+          <span class="en">Heel hook &amp; drop knee</span><span class="zh">挂脚与拧膝</span>
         </button>
       </nav>
     </aside>
@@ -1021,7 +1037,7 @@
       </section>
 
       <section class="slide" id="skills">
-        <p class="slide-kicker"><span class="en">Skills</span><span class="zh">技巧</span> <span class="en hint">holds, feet, and extra notes</span><span class="zh hint">抓法、脚法，随时记笔记</span></p>
+        <p class="slide-kicker"><span class="en">Skills</span><span class="zh">技巧</span> <span class="en hint">handholds and footwork</span><span class="zh hint">抓法与脚法</span></p>
         <div class="board">
           <article class="cell holds">
             <div>
@@ -1084,10 +1100,15 @@
             </ul>
             <img src="images/smear.png" alt="Smearing: the whole sole pressed into a smooth wall for friction." />
           </article>
+        </div>
+      </section>
 
-          <article class="cell adv">
+      <section class="slide" id="notes">
+        <p class="slide-kicker"><span class="en">Extra notes</span><span class="zh">进阶笔记</span> <span class="en hint">keep adding techniques here</span><span class="zh hint">随时往这里记</span></p>
+        <div class="board">
+          <article class="cell">
             <div class="copy">
-              <h2><span class="n">3.3</span><span class="en">Heel hook</span><span class="zh">挂脚 Heel Hook</span></h2>
+              <h2><span class="n">4.1</span><span class="en">Heel hook</span><span class="zh">挂脚 Heel Hook</span></h2>
               <ol class="why letters">
                 <li>
                   <strong class="en">What it is</strong>
@@ -1110,9 +1131,9 @@
             <img src="images/heel-hook.png" alt="Heel hook: placement, drive from the hips, swing-leg balance, and centre of gravity.">
           </article>
 
-          <article class="cell adv">
+          <article class="cell">
             <div class="copy">
-              <h2><span class="n">3.4</span><span class="en">Drop knee</span><span class="zh">拧膝 Drop Knee</span></h2>
+              <h2><span class="n">4.2</span><span class="en">Drop knee</span><span class="zh">拧膝 Drop Knee</span></h2>
               <ol class="why letters">
                 <li>
                   <strong class="en">What it is</strong>
