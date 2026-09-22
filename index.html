@@ -204,7 +204,7 @@
 
     #basics .board {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1.22fr 0.7fr;
+      grid-template-rows: auto 1.2fr 0.72fr;
       grid-auto-flow: column;
     }
 
@@ -321,6 +321,45 @@
       object-fit: contain;
       object-position: center top;
       background: #fff;
+    }
+
+    /* 2.2: figure height follows the copy; width stays fixed with white padding */
+    #basics .cues.fit {
+      flex: 0 1 auto;
+      gap: 2px;
+    }
+
+    #basics .cues.fit > li {
+      margin: 0;
+    }
+
+    #basics .cues.fit .cue {
+      grid-template-columns: minmax(0, 1fr) 152px;
+      gap: 6px;
+      align-items: stretch;
+      height: auto;
+    }
+
+    #basics .cues.fit .fig {
+      position: relative;
+      width: 152px;
+      min-height: 88px;
+      max-height: 100px;
+      min-width: 152px;
+      background: #fff;
+      align-self: stretch;
+    }
+
+    #basics .cues.fit .fig img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+      justify-self: stretch;
     }
 
     #basics .cue strong { display: block; margin-bottom: 2px; }
@@ -578,8 +617,16 @@
         height: auto;
       }
 
+      #basics .cues.fit .fig {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
       #basics .cue img,
+      #basics .cues.fit .fig img,
       #basics .cell.split img {
+        position: static;
         height: auto;
         max-height: 180px;
       }
@@ -762,7 +809,7 @@
 
           <article class="cell">
             <h2><span class="n">2.2</span><span class="en">Overcoming ground instincts &amp; body alignment</span><span class="zh">克服陆地直觉与身位纠偏</span></h2>
-            <ol class="why letters cues tight">
+            <ol class="why letters cues tight fit">
               <li>
                 <div class="cue">
                   <div>
@@ -773,7 +820,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>trust your rubber. Press with the big toe, straight down. Even a thumbnail-sized edge will lock your weight.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>信任橡胶。用大脚趾精确往下压；指甲盖大小的沿也能把体重锁住。</p>
                   </div>
-                  <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+                  <div class="fig">
+                    <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+                  </div>
                 </div>
               </li>
               <li>
@@ -786,7 +835,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hips so the weight sits over the feet, and the upper body can rest.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>主动压胯。侧身或开胯，让体重落在脚的正上方，减轻上肢负担。</p>
                   </div>
-                  <img src="images/hips-close.png" alt="Hips close to the wall: shorter lever, lower hand load.">
+                  <div class="fig">
+                    <img src="images/hips-close.png" alt="Hips close to the wall: shorter lever, lower hand load.">
+                  </div>
                 </div>
               </li>
               <li>
@@ -799,7 +850,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>sink before you rise. Drop the hips and bend the knees to shorten the lever, then lock the weight into the feet for a stable launch.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>先沉再起。降胯屈膝，缩短力臂，把体重垂直锁进脚里，再稳定起身。</p>
                   </div>
-                  <img src="images/lower-gravity.png" alt="Drop the hips before you stand up, so the legs can still push.">
+                  <div class="fig">
+                    <img src="images/lower-gravity.png" alt="Drop the hips before you stand up, so the legs can still push.">
+                  </div>
                 </div>
               </li>
             </ol>

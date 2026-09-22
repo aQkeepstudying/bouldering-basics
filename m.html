@@ -197,6 +197,17 @@
       gap: 8px;
     }
 
+    .cues.fit .cue {
+      grid-template-columns: minmax(0, 1fr) 132px;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .cues.fit .fig {
+      width: 132px;
+      background: #fff;
+    }
+
     .cue img {
       width: 100%;
       height: auto;
@@ -204,6 +215,12 @@
       max-height: 120px;
       object-fit: contain;
       background: #fff;
+    }
+
+    .cues.fit .fig img {
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
     }
 
     .card.split {
@@ -463,7 +480,7 @@
 
           <article class="card">
             <h2><span class="n">2.2</span><span class="en">Overcoming ground instincts &amp; body alignment</span><span class="zh">克服陆地直觉与身位纠偏</span></h2>
-            <ol class="why letters cues tight">
+            <ol class="why letters cues tight fit">
               <li>
                 <div class="cue">
                   <div>
@@ -474,7 +491,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>trust your rubber. Press with the big toe, straight down. Even a thumbnail-sized edge will lock your weight.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>信任橡胶。用大脚趾精确往下压；指甲盖大小的沿也能把体重锁住。</p>
                   </div>
-                  <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+                  <div class="fig">
+                    <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+                  </div>
                 </div>
               </li>
               <li>
@@ -487,7 +506,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hips so the weight sits over the feet, and the upper body can rest.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>主动压胯。侧身或开胯，让体重落在脚的正上方，减轻上肢负担。</p>
                   </div>
-                  <img src="images/hips-close.png" alt="Hips close to the wall: shorter lever, lower hand load.">
+                  <div class="fig">
+                    <img src="images/hips-close.png" alt="Hips close to the wall: shorter lever, lower hand load.">
+                  </div>
                 </div>
               </li>
               <li>
@@ -500,7 +521,9 @@
                     <p class="pair en"><span class="lab">The Fix:</span>sink before you rise. Drop the hips and bend the knees to shorten the lever, then lock the weight into the feet for a stable launch.</p>
                     <p class="pair zh"><span class="lab">The Fix：</span>先沉再起。降胯屈膝，缩短力臂，把体重垂直锁进脚里，再稳定起身。</p>
                   </div>
-                  <img src="images/lower-gravity.png" alt="Drop the hips before you stand up, so the legs can still push.">
+                  <div class="fig">
+                    <img src="images/lower-gravity.png" alt="Drop the hips before you stand up, so the legs can still push.">
+                  </div>
                 </div>
               </li>
             </ol>
