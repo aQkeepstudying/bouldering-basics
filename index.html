@@ -278,6 +278,51 @@
 
     #basics .note { font-size: 10.5px; line-height: 1.35; }
 
+    #basics .cell > :not(.duo) {
+      flex-shrink: 0;
+    }
+
+    #basics .duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      flex: 1 1 0;
+      min-height: 84px;
+      margin-top: 6px;
+    }
+
+    #basics .duo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+      object-position: center top;
+      background: #fff;
+    }
+
+    #basics .cell.split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(92px, 0.6fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    #basics .cell.split .copy {
+      min-width: 0;
+    }
+
+    #basics .cell.split img {
+      display: block;
+      width: auto;
+      height: 118px;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+      justify-self: end;
+    }
+
     .pair { margin: 0; }
     .lab {
       font-weight: 700;
@@ -478,6 +523,22 @@
       #basics .phys {
         grid-template-columns: 1fr;
         flex: none;
+      }
+
+      #basics .cell.split {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      #basics .duo {
+        flex: none;
+      }
+
+      #basics .duo img,
+      #basics .cell.split img {
+        height: auto;
+        max-height: 180px;
       }
 
       #basics .phys img,
@@ -702,18 +763,25 @@
                 <p class="pair zh"><span class="lab">The Fix：</span>局部放松。好点上甩手，只在移动时爆发，到位立刻卸力。</p>
               </li>
             </ol>
+            <div class="duo">
+              <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+              <img src="images/lower-gravity.png" alt="Drop the hips so the legs can still push.">
+            </div>
           </article>
 
-          <article class="cell">
-            <h2><span class="n">2.4</span><span class="en">Static balance on the wall</span><span class="zh">墙上的平衡美学</span></h2>
-            <ul class="en">
-              <li><strong>Two-point, opposite side:</strong> diagonal limbs (right hand + left foot) resist the rotation that peels you off. Same-side (left hand + left foot) lets the body rotate away.</li>
-              <li><strong>Three-point, the triangle:</strong> two hands and one foot, or two feet and one hand. The free limb is the one that moves.</li>
-            </ul>
-            <ul class="zh">
-              <li><strong>两点、异侧：</strong>对角的手脚（右手 + 左脚）最稳，顶住把人转离墙的力矩。同侧（左手 + 左脚）更容易被转出去。</li>
-              <li><strong>三点、三角：</strong>两手一脚，或两脚一手。空出来的那一只去够下一个点。</li>
-            </ul>
+          <article class="cell split">
+            <div class="copy">
+              <h2><span class="n">2.4</span><span class="en">Static balance on the wall</span><span class="zh">墙上的平衡美学</span></h2>
+              <ul class="en">
+                <li><strong>Two-point, opposite side:</strong> diagonal limbs (right hand + left foot) resist the rotation that peels you off. Same-side (left hand + left foot) lets the body rotate away.</li>
+                <li><strong>Three-point, the triangle:</strong> two hands and one foot, or two feet and one hand. The free limb is the one that moves.</li>
+              </ul>
+              <ul class="zh">
+                <li><strong>两点、异侧：</strong>对角的手脚（右手 + 左脚）最稳，顶住把人转离墙的力矩。同侧（左手 + 左脚）更容易被转出去。</li>
+                <li><strong>三点、三角：</strong>两手一脚，或两脚一手。空出来的那一只去够下一个点。</li>
+              </ul>
+            </div>
+            <img src="images/opposite-stable.jpg" alt="Same-side contact rotates you off the wall; opposite-side flag stays stable.">
           </article>
 
           <article class="cell">
@@ -762,6 +830,10 @@
               <li><strong>松手之后：</strong>剩下的是三角或异侧，还是会被转出去？</li>
               <li><strong>调整再动：</strong>若会被转出去，先上高脚或换脚。脚放稳了再蹬，够到下一个点。</li>
             </ul>
+            <div class="duo">
+              <img src="images/hips-close.jpg" alt="Keep the hips close to the wall so the feet take the weight.">
+              <img src="images/dynamic-move.jpg" alt="Reach with the whole body turning, not by pulling with the arms alone.">
+            </div>
           </article>
         </div>
       </section>
