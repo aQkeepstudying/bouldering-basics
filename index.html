@@ -209,20 +209,20 @@
     }
 
     #basics .cell {
-      font-size: 13.2px;
-      line-height: 1.36;
-      padding: 10px 12px 8px;
+      font-size: 12.5px;
+      line-height: 1.32;
+      padding: 9px 12px 7px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       min-height: 0;
     }
 
-    #basics h2 { font-size: 0.92rem; margin-bottom: 6px; }
+    #basics h2 { font-size: 0.9rem; margin-bottom: 5px; }
 
-    #basics li { margin: 0 0 0.28rem; }
+    #basics li { margin: 0 0 0.22rem; }
 
-    #basics p { margin: 0 0 0.32rem; }
+    #basics p { margin: 0 0 0.28rem; }
 
     .why {
       list-style: none;
@@ -234,61 +234,35 @@
     .why li {
       counter-increment: why;
       position: relative;
-      padding-left: 1.35rem;
-      margin: 0 0 0.38rem;
+      padding-left: 1.3rem;
+      margin: 0 0 0.2rem;
     }
 
     .why li::before {
       content: counter(why);
       position: absolute;
       left: 0;
-      top: 0;
+      top: 1px;
       font-size: 11px;
       font-weight: 700;
       color: var(--tape-2);
     }
 
-    .phys {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr 1fr;
-      gap: 8px;
-      flex: 1;
-      min-height: 0;
-      margin-top: 4px;
-    }
+    .why strong { display: block; margin-bottom: 1px; }
 
-    .phys figure {
-      margin: 0;
-      min-width: 0;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      padding: 4px 6px 5px;
-    }
-
-    .phys figcaption {
-      font-size: 11px;
-      line-height: 1.3;
+    .pair { margin: 0; }
+    .lab {
+      font-weight: 700;
       color: var(--mute);
-      margin-top: 4px;
-    }
-
-    .phys img,
-    .phys svg {
-      display: block;
-      width: 100%;
-      flex: 1;
-      min-height: 0;
-      object-fit: contain;
+      margin-right: 0.3em;
     }
 
     .sub {
       font-weight: 700;
-      margin: 0.35rem 0 0.15rem;
+      margin: 0.32rem 0 0.12rem;
     }
 
-    .sub:first-of-type { margin-top: 0.15rem; }
+    .sub:first-of-type { margin-top: 0.1rem; }
 
     .q {
       font-weight: 600;
@@ -630,160 +604,124 @@
       </section>
 
       <section class="slide" id="basics">
-        <p class="slide-kicker"><span class="en">Basics</span><span class="zh">基本知识</span> <span class="en hint">get on, then save energy</span><span class="zh hint">先上墙，再省力</span></p>
+        <p class="slide-kicker"><span class="en">Basics</span><span class="zh">基本知识</span> <span class="en hint">first time on the wall</span><span class="zh hint">第一次上墙，重建发力</span></p>
         <div class="board">
           <article class="cell">
-            <h2><span class="n">2.1</span><span class="en">Get on and try a line</span><span class="zh">上墙，先试一条</span></h2>
+            <h2><span class="n">2.1</span><span class="en">Getting on the wall: like climbing stairs</span><span class="zh">上墙：像走楼梯</span></h2>
             <ul class="en">
-              <li><strong>Pick the easiest grade</strong> on the wall. You are learning the body, not the number.</li>
-              <li><strong>Before you pull on:</strong> look where it goes, and where you will land if you fall. Do not climb directly above or below anyone.</li>
-              <li><strong>Get on.</strong> Feel the hands and the feet. Climb like stairs — legs push, hands catch.</li>
-              <li><strong>Practice coming down</strong> as much as going up. Downclimbing is how you learn to trust the feet.</li>
+              <li><strong>Route:</strong> start with the easiest grade in the gym (V0–V1).</li>
+              <li><strong>Before you pull on:</strong> look where it goes, and where you will land if you fall. Keep the landing zone clear.</li>
+              <li><strong>On the wall:</strong> think with your feet. Move like walking up stairs — legs push you up; hands only keep you on and keep you balanced.</li>
+              <li><strong>Coming down:</strong> practice getting off the wall safely, not only climbing up.</li>
             </ul>
             <ul class="zh">
-              <li><strong>选最简单的等级。</strong>现在练的是身体，不是数字。</li>
-              <li><strong>上手前先看线：</strong>往哪走、掉了会落在哪。不要爬到别人正上方或正下方。</li>
-              <li><strong>上墙。</strong>感受手和脚怎么发力。像走楼梯一样往上——腿推，手接。</li>
-              <li><strong>反复练习下降。</strong>会下来，才敢把重心交给脚。</li>
+              <li><strong>选线：</strong>从馆里最简单的等级开始（V0–V1）。</li>
+              <li><strong>上手前：</strong>看线往哪走、掉了会落在哪。垫子上不要有人。</li>
+              <li><strong>上了墙：</strong>把注意力放在脚上。像走楼梯——腿把人推上去，手只负责挂住和保持平衡。</li>
+              <li><strong>下来：</strong>反复练习怎么安全下来，不要只会往上爬。</li>
             </ul>
           </article>
 
           <article class="cell">
-            <h2><span class="n">2.2</span><span class="en">A few goes later: why so tired?</span><span class="zh">爬了几条，为什么这么累</span></h2>
-            <p class="en">On the ground, “grip tight, pull in, pull hard” works. On a vertical wall those instincts lock you up.</p>
-            <p class="zh">在地上，「抓紧、靠拢、用力」是对的。上了垂直岩壁，这套直觉会把人很快耗干。</p>
+            <h2><span class="n">2.2</span><span class="en">Why do you get so tired so quickly?</span><span class="zh">为什么这么快就累了</span></h2>
+            <p class="en">On the ground you grip tight, pull in, muscle through. On a vertical wall that same instinct burns you out.</p>
+            <p class="zh">在陆地上，直觉是抓紧、靠拢、用力。上了垂直的墙，这套动作会让身体很快僵掉。</p>
             <ol class="why">
               <li>
-                <div class="en"><strong>Hands don’t lift you. Legs do.</strong> Instinct: a pull-up. Train: stand up on the feet, like a squat. Hands only hang and steer.</div>
-                <div class="zh"><strong>手不拉人，脚推人。</strong>直觉：做引体向上。养成：像蹲起，腿把人送上去；手只负责挂住和保持方向。</div>
+                <strong class="en">Hands aren't for pulling up. Feet are the engine.</strong>
+                <strong class="zh">手不是用来往上拉的</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>you try to pull up like a pull-up. A few moves later the forearms are pumped.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>一上墙就像做引体向上，没几步小臂泵血，胳膊发硬。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>legs are the elevator. Each move is a squat: push off the feet. Hands only hang on and keep you balanced.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>腿发力站起来。手只是把你挂在墙上。每一次移动都像蹲起，把人推上去，不是拉上去。</p>
               </li>
               <li>
-                <div class="en"><strong>Hips to the wall, not the chest.</strong> Instinct: frog yourself on for safety. That pulls the centre of mass out, so the arms hang your weight. Train: press the pelvis in, or turn the hip (drop-knee) so the weight sits over the feet.</div>
-                <div class="zh"><strong>贴的是胯，不是胸口。</strong>直觉：整个人趴上去求安全，重心被拽出墙外，手在吊着你。养成：把骨盆压近墙，或侧身开胯，让重量落在脚的正上方。</div>
+                <strong class="en">Hips to the wall, not your chest.</strong>
+                <strong class="zh">贴墙的是胯</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>chest and belly glued on, like a frog. That pulls your weight out, so the arms hang you.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>胸口和肚子往墙上贴，整个人像只青蛙，重心其实已经被拽出墙外了，手在吊着你。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hip so the weight sits over the feet. Closer hips, lighter hands.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>把胯往墙上压。侧身、开胯都可以，让重量落到脚上面。胯越近墙，手越轻。</p>
               </li>
               <li>
-                <div class="en"><strong>Straight arms cheaper than a bent lock.</strong> Instinct: bend the elbows and hunch. The biceps stay switched on. Train: hang on the skeleton, arms like two ropes, until you actually need to move.</div>
-                <div class="zh"><strong>直臂比曲肘省力。</strong>直觉：弯肘、耸肩，把人锁在墙上。肌肉一直在收缩。养成：不做动态时，手臂像两根吊绳打直，把体重交给骨头。</div>
+                <strong class="en">Straight arms beat a bent lock-off.</strong>
+                <strong class="zh">手臂要打直</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>you bend the elbows and shrug, locking yourself close. The muscles never switch off.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>怕掉就弯肘、耸肩，人锁得很近，肌肉却一直在较劲。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>when you're not moving, hang on straight, relaxed arms — like two ropes. Let the skeleton take the weight.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>先别动态的时候，手臂放松打直，让骨头去挂体重。肌肉能歇就歇。</p>
               </li>
               <li>
-                <div class="en"><strong>Trust a tiny foothold.</strong> Instinct: only big holes, or a timid smear. Train: precise toe, weight straight down. Sticky rubber can hold you on a hold the size of a fingernail.</div>
-                <div class="zh"><strong>敢把重心交给小脚点。</strong>直觉：只踩大坑，或轻轻去蹭。养成：鞋尖踩准，垂直压下去。现代攀岩鞋的橡胶，指甲盖大的点也能站人。</div>
+                <strong class="en">Trust a tiny foothold. Put your weight on it.</strong>
+                <strong class="zh">小脚点也要敢踩</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>you hunt for big ledges, or smear without committing. A small nub looks like it will slip.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>只想踩大坑，或者拿鞋底去蹭。看见小突起就觉得会滑。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>place the toe, press straight down. A thumbnail of rubber can hold you if you actually stand on it.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>鞋尖踩准，把重心压上去。很多点只有指甲盖大，但只要压住，是站得住的。</p>
               </li>
               <li>
-                <div class="en"><strong>Relaxing is the hard skill.</strong> Instinct: everything on at once. Train: shake out on a good hand, breathe; commit the move; then find the next rest.</div>
-                <div class="zh"><strong>放松比发力难。</strong>直觉：全身一起绷。养成：好点上甩手、换气；移动时果断，到位立刻找新的平衡卸力。</div>
+                <strong class="en">Relaxing is harder than pulling.</strong>
+                <strong class="zh">会放松比会发力难</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>everything switches on at once.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>一紧张全身一起绷，不该用力的时候也在耗。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>shake out one hand, breathe; move, then find the next rest.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>抓到好点就甩手、换气。要动就果断动，到位了立刻找下一个能歇的位置。</p>
               </li>
             </ol>
           </article>
 
           <article class="cell">
             <h2><span class="n">2.3</span><span class="en">Physics that changes the move</span><span class="zh">用物理改动作</span></h2>
-            <p class="en">The wall never lifts you. It only gives back the force you put in, as a mirror. Change the body’s shape, and that mirror goes through bone instead of through a pumped forearm.</p>
-            <p class="zh">岩壁不会把你托上去。它只把你压进去的力，原样推回来。改的是身体的形状，让这股回力穿过骨头，而不是穿过已经泵死的小臂。</p>
-            <div class="phys">
-              <figure>
-                <img src="images/torque-body.png" alt="Hips far versus hips close: load, pivot, and hand pull." />
-                <figcaption class="en"><strong>Torque M = F · r.</strong> Hips 50 cm out ≈ 15 kg per arm; hips 20 cm in ≈ 6 kg. Shorten r.</figcaption>
-                <figcaption class="zh"><strong>力矩 M = F · r。</strong>髋离墙 50 cm，大约每只手 15 kg；贴到 20 cm，大约 6 kg。缩短 r，手上的 F 就下来。</figcaption>
-              </figure>
-              <figure>
-                <svg viewBox="0 0 200 130" role="img" aria-label="Action and reaction at the foot.">
-                  <rect x="14" y="10" width="14" height="110" fill="#1a221c"/>
-                  <rect x="28" y="78" width="16" height="7" rx="1" fill="#3d7ea6"/>
-                  <ellipse cx="56" cy="82" rx="18" ry="9" fill="#3d2a24"/>
-                  <path d="M92 82 H46" stroke="#b84d6f" stroke-width="2.4" fill="none" marker-end="url(#ar)"/>
-                  <path d="M28 58 H78" stroke="#3d7ea6" stroke-width="2.4" fill="none" marker-end="url(#ar2)"/>
-                  <path d="M56 78 V38" stroke="#e0b429" stroke-width="2.4" fill="none" marker-end="url(#ar3)"/>
-                  <defs>
-                    <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b84d6f"/></marker>
-                    <marker id="ar2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#3d7ea6"/></marker>
-                    <marker id="ar3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#e0b429"/></marker>
-                  </defs>
-                  <g class="en" font-size="9" font-family="IBM Plex Sans, sans-serif">
-                    <text x="96" y="86" fill="#b84d6f">you press in</text>
-                    <text x="82" y="56" fill="#3d7ea6">wall pushes back</text>
-                    <text x="62" y="34" fill="#1a221c">friction</text>
-                  </g>
-                  <g class="zh" font-size="10" font-family="PingFang SC, sans-serif">
-                    <text x="96" y="86" fill="#b84d6f">你往里压</text>
-                    <text x="82" y="56" fill="#3d7ea6">墙推回来</text>
-                    <text x="62" y="34" fill="#1a221c">摩擦</text>
-                  </g>
-                </svg>
-                <figcaption class="en"><strong>Action / reaction.</strong> A timid tap gives almost no push back, so the foot skates. Commit weight into the rubber.</figcaption>
-                <figcaption class="zh"><strong>作用与反作用。</strong>轻轻点一下几乎没有回力，脚会滑。把体重压进橡胶，墙才把你锁住。</figcaption>
-              </figure>
-              <figure>
-                <svg viewBox="0 0 220 130" role="img" aria-label="Inertia: a still body misses, a swinging body reaches.">
-                  <rect x="8" y="12" width="8" height="106" fill="#1a221c"/>
-                  <rect x="16" y="28" width="10" height="6" fill="#b84d6f"/>
-                  <circle cx="48" cy="70" r="7" fill="#3d2a24"/>
-                  <path d="M48 77 V98 L40 118 M48 98 L58 118 M48 82 L28 92" stroke="#1a221c" stroke-width="2.2" fill="none"/>
-                  <path d="M48 70 L22 34" stroke="#1a221c" stroke-width="2.2" fill="none" stroke-dasharray="3 3"/>
-                  <text x="36" y="24" font-size="9" fill="#4a574e" font-family="IBM Plex Sans, PingFang SC, sans-serif">
-                    <tspan class="en">still: miss</tspan><tspan class="zh">静止：够不到</tspan>
-                  </text>
-                  <rect x="118" y="12" width="8" height="106" fill="#1a221c"/>
-                  <rect x="126" y="28" width="10" height="6" fill="#b84d6f"/>
-                  <circle cx="168" cy="58" r="7" fill="#3d2a24"/>
-                  <path d="M168 65 L160 96 L150 118 M160 96 L172 118" stroke="#1a221c" stroke-width="2.2" fill="none"/>
-                  <path d="M172 96 Q188 70 132 34" stroke="#e0b429" stroke-width="2.4" fill="none"/>
-                  <path d="M168 58 L132 34" stroke="#1a221c" stroke-width="2.2" fill="none"/>
-                  <text x="140" y="24" font-size="9" fill="#4a574e" font-family="IBM Plex Sans, PingFang SC, sans-serif">
-                    <tspan class="en">swing: catch</tspan><tspan class="zh">摆过去：够到</tspan>
-                  </text>
-                </svg>
-                <figcaption class="en"><strong>Inertia.</strong> Toes → legs → both hands → one hand. A moving body reaches holds a still body cannot.</figcaption>
-                <figcaption class="zh"><strong>惯性。</strong>脚尖 → 腿 → 双手 → 单手。运动中的身体，可以够到静止时够不到的点。</figcaption>
-              </figure>
-            </div>
+            <p class="sub en">Leverage and torque — the “open book”</p>
+            <p class="sub zh">杠杆与力矩：对抗「开门」</p>
+            <p class="en">Gravity is trying to rotate you off the wall. That rotation is torque. When one hand reaches out, the body wants to peel open like a book. A drop-knee or a hip turn brings the centre of mass in, shortens <em>r</em>, and takes load off the arms and back.</p>
+            <p class="zh">重力一直想把你转离墙，这个转的力就是力矩。一只手够远时，人会像书一样被掀开。侧身或 drop knee 把重心收回来，缩短 <em>r</em>，背和手臂就轻很多。</p>
+            <p class="sub en">Action and reaction</p>
+            <p class="sub zh">作用与反作用</p>
+            <p class="en">The wall does not lift you. It only gives back the force you put in. On an overhang the foot has to push <em>in</em>, or there is no friction. Direct that push through the skeleton, not through a pumped forearm.</p>
+            <p class="zh">墙不会把你托上去，只把你压进去的力推回来。外倾墙上，脚要往里压，才会有摩擦。让这股回力走骨头，不要走已经泵死的小臂。</p>
+            <p class="sub en">Inertia and acceleration</p>
+            <p class="sub zh">惯性与加速度</p>
+            <p class="en">Force makes acceleration; speed makes distance. A moving body reaches holds a still body cannot. Chain it: toe push → leg drive → hip swing → one-hand catch. Do not muscle the gap with the biceps.</p>
+            <p class="zh"><em>F = ma</em>。有速度才有距离。运动中的身体可以够到静止时够不到的点。连续加速：脚尖推 → 腿 → 髋摆 → 单手够。远点不要纯靠手拉。</p>
           </article>
 
           <article class="cell">
             <h2><span class="n">2.4</span><span class="en">What actually saves energy</span><span class="zh">怎样更省力</span></h2>
-            <p class="sub en">One chain: toe, straight arm, hip</p>
-            <p class="sub zh">一条链：脚尖、直臂、贴髋</p>
+            <p class="sub en">1. Stack the skeleton</p>
+            <p class="sub zh">1. 把骨头叠起来</p>
             <ul class="en">
-              <li><strong>Toe-edge</strong> like a ballet point: tiny contact, high normal force, less work for the arms.</li>
-              <li><strong>Straight arms.</strong> A bent elbow is a new fulcrum. You are no longer a single crane from feet to hands, so the biceps hold a huge moment — then the forearms pump, then you drop.</li>
-              <li><strong>Hips in</strong> shortens r. Same body, much smaller pull at the hands.</li>
+              <li><strong>Toe:</strong> like a ballet point — small contact, a clean upward push, less work for the arms.</li>
+              <li><strong>Straight arms:</strong> a bent elbow is a new fulcrum, so the biceps fight gravity until they pump.</li>
+              <li><strong>Hips in:</strong> shortens the lever. Same body, smaller pull at the hands.</li>
             </ul>
             <ul class="zh">
-              <li><strong>脚尖踩点</strong>像芭蕾：接触面小，法向力大，手臂更轻松。</li>
-              <li><strong>手臂打直。</strong>弯肘会变成新的支点，身体不再是从脚到手的一根杆，二头肌要扛很大的力矩——然后小臂泵死，人掉下来。</li>
-              <li><strong>髋贴墙</strong>缩短 r。同样的体重，手上要拉的力小很多。</li>
+              <li><strong>脚尖：</strong>像芭蕾踩点，接触面小，往上的力干净，手臂更轻松。</li>
+              <li><strong>手臂打直：</strong>弯肘会多出一个支点，二头肌一直在跟重力较劲，然后泵死。</li>
+              <li><strong>髋贴墙：</strong>缩短力臂。同样的体重，手上要拉的力更小。</li>
             </ul>
-            <p class="sub en">Balance: opposite side, then a triangle</p>
-            <p class="sub zh">平衡：先异侧，再三角形</p>
-            <div class="phys" style="grid-template-columns: 1fr 1.15fr; flex: 0 1 auto; max-height: 42%;">
-              <figure>
-                <svg viewBox="0 0 280 120" role="img" aria-label="Diagonal balance versus same-side door opening.">
-                  <rect x="18" y="8" width="8" height="104" fill="#1a221c"/>
-                  <circle cx="26" cy="28" r="5" fill="#3d7ea6"/>
-                  <circle cx="26" cy="96" r="5" fill="#e0b429"/>
-                  <circle cx="70" cy="62" r="6" fill="#3d2a24"/>
-                  <path d="M26 28 L70 62 L26 96 Z" fill="none" stroke="#3d7ea6" stroke-width="2"/>
-                  <text x="80" y="28" font-size="10" fill="#1a221c" font-family="PingFang SC, IBM Plex Sans, sans-serif">
-                    <tspan class="en">opposite = triangle</tspan><tspan class="zh">异侧 = 三角</tspan>
-                  </text>
-                  <rect x="158" y="8" width="8" height="104" fill="#1a221c"/>
-                  <circle cx="166" cy="28" r="5" fill="#b84d6f"/>
-                  <circle cx="166" cy="96" r="5" fill="#b84d6f"/>
-                  <circle cx="214" cy="58" r="6" fill="#3d2a24"/>
-                  <path d="M166 28 L214 58 L166 96" fill="none" stroke="#b84d6f" stroke-width="2"/>
-                  <path d="M214 58 A40 40 0 0 1 232 96" fill="none" stroke="#b84d6f" stroke-width="2" stroke-dasharray="3 2"/>
-                  <text x="175" y="20" font-size="10" fill="#1a221c" font-family="PingFang SC, IBM Plex Sans, sans-serif">
-                    <tspan class="en">same side = door</tspan><tspan class="zh">同侧 = 开门</tspan>
-                  </text>
-                </svg>
-                <figcaption class="en">Right hand + left foot is stable. Right hand + right foot rotates you off. Three points: keep an acute triangle; the free limb moves.</figcaption>
-                <figcaption class="zh">右手+左脚稳；右手+右脚会把门打开。三点时保持锐角三角形，空出来的那只手脚去够下一个点。</figcaption>
-              </figure>
-              <figure>
-                <figcaption class="en" style="margin-top:0"><strong>Five seconds before you move.</strong> Which way does the next hold face? If you let go of the right hand, is what remains a triangle — or a door? If a door, high-step or switch feet first. Then push, and use that inertia to the next hold.</figcaption>
-                <figcaption class="zh" style="margin-top:0"><strong>移动前的五秒。</strong>下一个点开口朝哪？松掉右手后，剩下的是三角还是开门？若是开门，先上高脚或换脚。然后蹬墙，用惯性够到下一个点。前进就是从一个平衡走到下一个平衡。</figcaption>
-              </figure>
-            </div>
+            <p class="sub en">2. Static balance</p>
+            <p class="sub zh">2. 墙上的平衡</p>
+            <ul class="en">
+              <li><strong>Two-point, opposite side:</strong> right hand + left foot resists the open-book rotation. Same-side (left hand + left foot) opens the door.</li>
+              <li><strong>Three-point:</strong> two hands and one foot, or two feet and one hand — a triangle. The free limb is the one that moves.</li>
+            </ul>
+            <ul class="zh">
+              <li><strong>两点、异侧：</strong>右手+左脚更能顶住开门。同侧（左手+左脚）更容易被转出去。</li>
+              <li><strong>三点：</strong>两手一脚，或两脚一手，成一个三角。空出来的那只手脚去够下一个点。</li>
+            </ul>
+            <p class="sub en">3. Five seconds before you move</p>
+            <p class="sub zh">3. 移动前的五秒</p>
+            <ul class="en">
+              <li>Which way does the next hold face? Match the hand to the orientation.</li>
+              <li>If you let that hand go, is what remains a triangle — or a door?</li>
+              <li>If a door: high-step or switch feet first. Then push with the legs and use that momentum to the next hold.</li>
+            </ul>
+            <ul class="zh">
+              <li>下一个点开口朝哪？哪只手更顺。</li>
+              <li>松掉这只手之后，剩下的是三角，还是开门？</li>
+              <li>若是开门：先上高脚或换脚。然后蹬腿，用惯性够到下一个点。</li>
+            </ul>
           </article>
         </div>
       </section>
