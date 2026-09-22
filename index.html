@@ -205,14 +205,14 @@
     #basics .board {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      grid-auto-flow: row;
+      grid-auto-flow: column;
     }
 
     #basics .cell {
-      font-size: 12.5px;
-      line-height: 1.32;
-      padding: 9px 12px 7px;
-      overflow: hidden;
+      font-size: 12.6px;
+      line-height: 1.36;
+      padding: 10px 12px 8px;
+      overflow: auto;
       display: flex;
       flex-direction: column;
       min-height: 0;
@@ -231,14 +231,14 @@
       counter-reset: why;
     }
 
-    .why li {
+    .why > li {
       counter-increment: why;
       position: relative;
       padding-left: 1.3rem;
-      margin: 0 0 0.2rem;
+      margin: 0 0 0.32rem;
     }
 
-    .why li::before {
+    .why > li::before {
       content: counter(why);
       position: absolute;
       left: 0;
@@ -248,7 +248,18 @@
       color: var(--tape-2);
     }
 
-    .why strong { display: block; margin-bottom: 1px; }
+    .why > li > strong { display: block; margin-bottom: 2px; }
+
+    .why > li > ul {
+      list-style: disc;
+      margin: 0.12rem 0 0;
+      padding-left: 1.05rem;
+    }
+
+    .why > li > ul > li {
+      margin: 0 0 0.18rem;
+      padding-left: 0;
+    }
 
     .pair { margin: 0; }
     .lab {
@@ -609,119 +620,143 @@
           <article class="cell">
             <h2><span class="n">2.1</span><span class="en">Getting on the wall: like climbing stairs</span><span class="zh">上墙：像走楼梯</span></h2>
             <ul class="en">
-              <li><strong>Route:</strong> start with the easiest grade in the gym (V0–V1).</li>
-              <li><strong>Before you pull on:</strong> look where it goes, and where you will land if you fall. Keep the landing zone clear.</li>
-              <li><strong>On the wall:</strong> think with your feet. Move like walking up stairs — legs push you up; hands only keep you on and keep you balanced.</li>
-              <li><strong>Coming down:</strong> practice getting off the wall safely, not only climbing up.</li>
+              <li><strong>Route selection:</strong> start with the lowest difficulty grade in the gym (for example V0–V1). You are learning how the body works, not chasing a number.</li>
+              <li><strong>Pre-climb observation:</strong> before pulling on, look at the problem — where it goes, and where you will land if you fall. Keep the landing zone clear and safe. Do not climb directly above or below anyone.</li>
+              <li><strong>Core effort:</strong> once on the wall, put your attention on the feet. Move like walking up stairs: the legs push the body up, while the hands only keep you on the wall and keep you balanced.</li>
+              <li><strong>Practice descent:</strong> repeatedly practice getting off the wall safely. Downclimbing is how you start to trust the feet.</li>
             </ul>
             <ul class="zh">
-              <li><strong>选线：</strong>从馆里最简单的等级开始（V0–V1）。</li>
-              <li><strong>上手前：</strong>看线往哪走、掉了会落在哪。垫子上不要有人。</li>
-              <li><strong>上了墙：</strong>把注意力放在脚上。像走楼梯——腿把人推上去，手只负责挂住和保持平衡。</li>
-              <li><strong>下来：</strong>反复练习怎么安全下来，不要只会往上爬。</li>
+              <li><strong>选线：</strong>从馆里最简单的等级开始（例如 V0–V1）。现在练的是身体怎么发力，不是数字。</li>
+              <li><strong>上手前先看：</strong>看这条线往哪走、掉了会落在哪。垫子上不要有人。也不要爬到别人正上方或正下方。</li>
+              <li><strong>上了墙：</strong>把注意力放在脚上。像走楼梯一样往上：腿把人推上去，手只负责挂住和保持平衡。</li>
+              <li><strong>反复练习下降：</strong>会下来，才敢把重心交给脚。</li>
             </ul>
           </article>
 
           <article class="cell">
             <h2><span class="n">2.2</span><span class="en">Why do you get so tired so quickly?</span><span class="zh">为什么这么快就累了</span></h2>
-            <p class="en">On the ground you grip tight, pull in, muscle through. On a vertical wall that same instinct burns you out.</p>
-            <p class="zh">在陆地上，直觉是抓紧、靠拢、用力。上了垂直的墙，这套动作会让身体很快僵掉。</p>
+            <p class="en">On the ground, our instinct is to “grip tight, pull in, and muscle through.” On a vertical wall, those same land-based instincts make the body lock up and burn out after a few moves.</p>
+            <p class="zh">在陆地上，我们的直觉是“抓紧、靠拢、用力”。上了垂直的岩壁，这套动作往往会让身体迅速僵硬、消耗殆尽。</p>
             <ol class="why">
               <li>
-                <strong class="en">Hands aren't for pulling up. Feet are the engine.</strong>
-                <strong class="zh">手不是用来往上拉的</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>you try to pull up like a pull-up. A few moves later the forearms are pumped.</p>
-                <p class="pair zh"><span class="lab">反直觉点：</span>一上墙就像做引体向上，没几步小臂泵血，胳膊发硬。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>legs are the elevator. Each move is a squat: push off the feet. Hands only hang on and keep you balanced.</p>
-                <p class="pair zh"><span class="lab">需要培养：</span>腿发力站起来。手只是把你挂在墙上。每一次移动都像蹲起，把人推上去，不是拉上去。</p>
+                <strong class="en">Your hands aren't for pulling up; your feet are the engine</strong>
+                <strong class="zh">手不是用来向上拉的，脚才是推进器</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>beginners instinctively try to pull themselves up with their arms like a pull-up, leading to pumped forearms and exhaustion within a few moves.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>初学者上墙的第一反应往往是像引体向上一样，用手臂拼命把身体往上拉，结果没爬几步就小臂泵血、双臂僵硬。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>your legs are the elevator. Every move should be driven by pushing off your feet — like doing a squat or standing up — to elevate the body. Hands only hang on and keep you balanced. Bouldering is fundamentally a lower-body sport.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>用双腿发力站起，双手只是用来保持平衡和固定身体。想象你的双腿是电梯，每一次移动都是靠脚踩着点、像蹲起或站立一样把身体推上去。攀岩其实是一项下肢运动。</p>
               </li>
               <li>
-                <strong class="en">Hips to the wall, not your chest.</strong>
-                <strong class="zh">贴墙的是胯</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>chest and belly glued on, like a frog. That pulls your weight out, so the arms hang you.</p>
-                <p class="pair zh"><span class="lab">反直觉点：</span>胸口和肚子往墙上贴，整个人像只青蛙，重心其实已经被拽出墙外了，手在吊着你。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hip so the weight sits over the feet. Closer hips, lighter hands.</p>
-                <p class="pair zh"><span class="lab">需要培养：</span>把胯往墙上压。侧身、开胯都可以，让重量落到脚上面。胯越近墙，手越轻。</p>
+                <strong class="en">Keep your pelvis (hips) close to the wall, not your chest</strong>
+                <strong class="zh">贴墙的是胯，不是胸口</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>for a sense of security, beginners press their chest and belly flat against the wall like a frog. That pulls the centre of gravity outward and places a massive hanging strain on the arms.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>为了追求安全感，初学者本能地会让胸口、肚子紧紧贴在岩壁上，整个人像一只趴在墙上的青蛙。这种姿势会把重心往外拉，让手臂承受巨大的悬挂拉力。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>actively press your hips in. Through side-climbing or opening the hips, bring the pelvis close to the wall so the centre of gravity falls directly over the feet. The closer the hips are to the wall, the more vertical the pressure on the feet, and the lighter the hands feel.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>主动把胯部压近岩壁，甚至通过侧身或开胯，让重心落在脚的正上方。骨盆越贴近墙面，双脚对岩点的压力就越垂直，双手的负担就越小。</p>
               </li>
               <li>
-                <strong class="en">Straight arms beat a bent lock-off.</strong>
-                <strong class="zh">手臂要打直</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>you bend the elbows and shrug, locking yourself close. The muscles never switch off.</p>
-                <p class="pair zh"><span class="lab">反直觉点：</span>怕掉就弯肘、耸肩，人锁得很近，肌肉却一直在较劲。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>when you're not moving, hang on straight, relaxed arms — like two ropes. Let the skeleton take the weight.</p>
-                <p class="pair zh"><span class="lab">需要培养：</span>先别动态的时候，手臂放松打直，让骨头去挂体重。肌肉能歇就歇。</p>
+                <strong class="en">Straight arms beat bent-elbow bracing</strong>
+                <strong class="zh">打直手臂比曲肘死撑更省力</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>when feeling insecure, people unconsciously bend the elbows and shrug the shoulders, locking the body tightly against the wall. This keeps the arm muscles in a constant state of contraction.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>害怕掉落时，人会不自觉地把胳膊肘弯曲、耸起肩膀，把身体紧紧锁在离墙很近的地方。但这会让手臂肌肉一直处于持续收缩的紧张状态。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>hang with straight, relaxed arms. Unless you are executing a dynamic move, let the arms hang like two suspension ropes, using bone and joints to support the weight, so the muscles get a chance to rest.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>在没有做动态动作时，尽量让手臂像两根吊绳一样自然下垂打直，利用骨骼和关节的挂力来支撑体重，给肌肉争取喘息的时间。</p>
               </li>
               <li>
-                <strong class="en">Trust a tiny foothold. Put your weight on it.</strong>
-                <strong class="zh">小脚点也要敢踩</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>you hunt for big ledges, or smear without committing. A small nub looks like it will slip.</p>
-                <p class="pair zh"><span class="lab">反直觉点：</span>只想踩大坑，或者拿鞋底去蹭。看见小突起就觉得会滑。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>place the toe, press straight down. A thumbnail of rubber can hold you if you actually stand on it.</p>
-                <p class="pair zh"><span class="lab">需要培养：</span>鞋尖踩准，把重心压上去。很多点只有指甲盖大，但只要压住，是站得住的。</p>
+                <strong class="en">Trust tiny footholds and commit your weight</strong>
+                <strong class="zh">学会信任微小的脚点，敢于把重心完全交出去</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>beginners look for massive, comfortable ledges, or try to smear the shoes haphazardly. Facing a small plastic nub, instinct tells you it will slip.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>初学者倾向于把脚踩在很大、很舒服的坑里，或者拼命用鞋底去蹭墙。面对一个光滑的小突起，本能会抗拒把身体重量压上去，觉得这绝对会滑。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>trust your rubber. As long as the toe is precisely placed on the hold with vertical downward pressure, even a thumbnail-sized edge is enough to support the entire body.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>建立对攀岩鞋橡胶摩擦力的信任。很多时候，只要鞋尖精确地踩在点上，并且保持垂直向下的压力，哪怕只有指甲盖大小的面积也足够支撑全身。</p>
               </li>
               <li>
-                <strong class="en">Relaxing is harder than pulling.</strong>
-                <strong class="zh">会放松比会发力难</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>everything switches on at once.</p>
-                <p class="pair zh"><span class="lab">反直觉点：</span>一紧张全身一起绷，不该用力的时候也在耗。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>shake out one hand, breathe; move, then find the next rest.</p>
-                <p class="pair zh"><span class="lab">需要培养：</span>抓到好点就甩手、换气。要动就果断动，到位了立刻找下一个能歇的位置。</p>
+                <strong class="en">Relaxation is harder than tension: micro-releasing as you climb</strong>
+                <strong class="zh">放松比发力更难：动态过程中的瞬间卸力</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>tension causes all muscles to contract at once, leading to stiff, jerky movement and wasted energy even when you are not going anywhere.</p>
+                <p class="pair zh"><span class="lab">反直觉点：</span>人在紧张时全身肌肉会同时绷紧，导致动作僵硬、卡顿，甚至在不需要发力的时候也在内耗体力。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>learn to micro-relax. On a comfortable hold, shake out and relax one hand at a time, and breathe. Explode only during the actual movement, then immediately find a new balance point to unload.</p>
+                <p class="pair zh"><span class="lab">需要培养：</span>学会在攀爬间隙局部放松。抓到比较好的手点时，单手交替放松、甩手、调整呼吸；移动手脚的瞬间果断发力，移动完成后立刻找到新的平衡点卸力。</p>
               </li>
             </ol>
           </article>
 
           <article class="cell">
             <h2><span class="n">2.3</span><span class="en">Physics that changes the move</span><span class="zh">用物理改动作</span></h2>
-            <p class="sub en">Leverage and torque — the “open book”</p>
-            <p class="sub zh">杠杆与力矩：对抗「开门」</p>
-            <p class="en">Gravity is trying to rotate you off the wall. That rotation is torque. When one hand reaches out, the body wants to peel open like a book. A drop-knee or a hip turn brings the centre of mass in, shortens <em>r</em>, and takes load off the arms and back.</p>
-            <p class="zh">重力一直想把你转离墙，这个转的力就是力矩。一只手够远时，人会像书一样被掀开。侧身或 drop knee 把重心收回来，缩短 <em>r</em>，背和手臂就轻很多。</p>
-            <p class="sub en">Action and reaction</p>
-            <p class="sub zh">作用与反作用</p>
-            <p class="en">The wall does not lift you. It only gives back the force you put in. On an overhang the foot has to push <em>in</em>, or there is no friction. Direct that push through the skeleton, not through a pumped forearm.</p>
-            <p class="zh">墙不会把你托上去，只把你压进去的力推回来。外倾墙上，脚要往里压，才会有摩擦。让这股回力走骨头，不要走已经泵死的小臂。</p>
-            <p class="sub en">Inertia and acceleration</p>
-            <p class="sub zh">惯性与加速度</p>
-            <p class="en">Force makes acceleration; speed makes distance. A moving body reaches holds a still body cannot. Chain it: toe push → leg drive → hip swing → one-hand catch. Do not muscle the gap with the biceps.</p>
-            <p class="zh"><em>F = ma</em>。有速度才有距离。运动中的身体可以够到静止时够不到的点。连续加速：脚尖推 → 腿 → 髋摆 → 单手够。远点不要纯靠手拉。</p>
+            <ol class="why">
+              <li>
+                <strong class="en">Leverage and torque</strong>
+                <strong class="zh">杠杆与力矩</strong>
+                <p class="pair en"><span class="lab">The physics:</span>torque is the rotational force caused by gravity pulling you away from the wall. Climbing is the constant work of keeping that rotation from winning.</p>
+                <p class="pair zh"><span class="lab">物理：</span>力矩是重力把你转离墙的那个力。攀岩就是一直在跟这个转动作对。</p>
+                <p class="pair en"><span class="lab">The application:</span>treat the body as a multi-lever system. Most useful techniques are just moving the fulcrum or shortening the lever arm <em>r</em>. When one hand reaches far, the hips tend to swing out. A drop-knee or a hip turn brings the centre of gravity back in, shortens <em>r</em>, and takes a large load off the arms and back.</p>
+                <p class="pair zh"><span class="lab">用在墙上：</span>把身体看成一个多级杠杆系统。许多技巧，本质都是在挪支点、缩短力臂 <em>r</em>。一只手够远时，髋容易往外摆。侧身或 drop knee 把重心收回来，缩短 <em>r</em>，背和手臂会轻很多。</p>
+              </li>
+              <li>
+                <strong class="en">Action and reaction: channeling force through the skeleton</strong>
+                <strong class="zh">作用与反作用：让力穿过骨架</strong>
+                <p class="pair en"><span class="lab">The physics:</span>Newton’s third law. The wall never lifts you. It only gives back the exact force you put into it.</p>
+                <p class="pair zh"><span class="lab">物理：</span>牛顿第三定律。岩壁不会主动把你托上去，它给予你的永远是你施加给它的力的反向镜像。</p>
+                <p class="pair en"><span class="lab">The application:</span>beginners often just squeeze harder. What matters more is the direction of the force at each contact. On an overhang the foot has to push inward, or there is no normal force, and therefore no friction. Direct that reaction through the skeleton, not through a pumped forearm — four ounces moving a thousand pounds.</p>
+                <p class="pair zh"><span class="lab">用在墙上：</span>初学者容易死抓，只知道用力的大小。更要紧的是每个接触点力的方向。外倾墙上，脚要往里压，才有法向力，也才有摩擦。让这股回力穿过核心骨架，不要穿过已经泵死的小臂，才是四两拨千斤。</p>
+              </li>
+              <li>
+                <strong class="en">Inertia and acceleration: momentum over muscle</strong>
+                <strong class="zh">惯性与加速度：用动量，不要纯靠肌肉</strong>
+                <p class="pair en"><span class="lab">The physics:</span>force produces acceleration; speed creates distance. Because of inertia, a moving body can arrive at a hold that is impossible from a dead hang.</p>
+                <p class="pair zh"><span class="lab">物理：</span>受力才有加速度，有速度才有距离。因为惯性，运动中的身体可以够到静止时够不到的点。</p>
+                <p class="pair en"><span class="lab">The application:</span>pure arm-pulling makes long reaches exhausting. Chain a continuous acceleration: toe push → leg drive → hip swing → one-hand catch. Use the momentum generated by the legs to float to the next hold, instead of fighting the gap with the biceps.</p>
+                <p class="pair zh"><span class="lab">用在墙上：</span>纯靠手拉，远点会把人抽干。做出连续加速：脚尖推 → 腿 → 髋摆 → 单手够。用腿带出来的动量荡过去，不要靠二头肌硬够。</p>
+              </li>
+            </ol>
           </article>
 
           <article class="cell">
             <h2><span class="n">2.4</span><span class="en">What actually saves energy</span><span class="zh">怎样更省力</span></h2>
-            <p class="sub en">1. Stack the skeleton</p>
-            <p class="sub zh">1. 把骨头叠起来</p>
-            <ul class="en">
-              <li><strong>Toe:</strong> like a ballet point — small contact, a clean upward push, less work for the arms.</li>
-              <li><strong>Straight arms:</strong> a bent elbow is a new fulcrum, so the biceps fight gravity until they pump.</li>
-              <li><strong>Hips in:</strong> shortens the lever. Same body, smaller pull at the hands.</li>
-            </ul>
-            <ul class="zh">
-              <li><strong>脚尖：</strong>像芭蕾踩点，接触面小，往上的力干净，手臂更轻松。</li>
-              <li><strong>手臂打直：</strong>弯肘会多出一个支点，二头肌一直在跟重力较劲，然后泵死。</li>
-              <li><strong>髋贴墙：</strong>缩短力臂。同样的体重，手上要拉的力更小。</li>
-            </ul>
-            <p class="sub en">2. Static balance</p>
-            <p class="sub zh">2. 墙上的平衡</p>
-            <ul class="en">
-              <li><strong>Two-point, opposite side:</strong> right hand + left foot resists the open-book rotation. Same-side (left hand + left foot) opens the door.</li>
-              <li><strong>Three-point:</strong> two hands and one foot, or two feet and one hand — a triangle. The free limb is the one that moves.</li>
-            </ul>
-            <ul class="zh">
-              <li><strong>两点、异侧：</strong>右手+左脚更能顶住开门。同侧（左手+左脚）更容易被转出去。</li>
-              <li><strong>三点：</strong>两手一脚，或两脚一手，成一个三角。空出来的那只手脚去够下一个点。</li>
-            </ul>
-            <p class="sub en">3. Five seconds before you move</p>
-            <p class="sub zh">3. 移动前的五秒</p>
-            <ul class="en">
-              <li>Which way does the next hold face? Match the hand to the orientation.</li>
-              <li>If you let that hand go, is what remains a triangle — or a door?</li>
-              <li>If a door: high-step or switch feet first. Then push with the legs and use that momentum to the next hold.</li>
-            </ul>
-            <ul class="zh">
-              <li>下一个点开口朝哪？哪只手更顺。</li>
-              <li>松掉这只手之后，剩下的是三角，还是开门？</li>
-              <li>若是开门：先上高脚或换脚。然后蹬腿，用惯性够到下一个点。</li>
-            </ul>
+            <ol class="why">
+              <li>
+                <strong class="en">Full-body integration: less pressure for your arm</strong>
+                <strong class="zh">全身连成一根：让手臂更轻</strong>
+                <ul class="en">
+                  <li><strong>Toe placement:</strong> like a ballet dancer pointing onto the hold. A small, precise contact gives a clean upward push, so the arms do less hanging.</li>
+                  <li><strong>Straight arms:</strong> a bent elbow becomes a new fulcrum. You are no longer one crane from the feet to the hands, so the biceps have to fight gravity on their own, and the forearms pump.</li>
+                  <li><strong>Close to the wall:</strong> hips in shortens the lever arm of your body weight against the hands. Same person, much less pull at the arms.</li>
+                </ul>
+                <ul class="zh">
+                  <li><strong>脚尖踩点：</strong>像芭蕾踩在点上。接触面小而准，更容易找到向上的正压力，手臂少做吊着的活。</li>
+                  <li><strong>手臂打直：</strong>弯肘会多出一个支点。身体不再是从脚到手的一根杆，二头肌只好自己跟重力较劲，然后小臂泵死。</li>
+                  <li><strong>贴进岩壁：</strong>髋靠近墙，缩短体重对手的力臂。越贴近岩壁，手臂压力越小。</li>
+                </ul>
+              </li>
+              <li>
+                <strong class="en">Static balance on the wall</strong>
+                <strong class="zh">墙上的平衡</strong>
+                <ul class="en">
+                  <li><strong>Two-point, opposite side:</strong> diagonal limbs (right hand + left foot) give the most stable pair, and resist the rotation that tries to peel you off. Same-side (left hand + left foot) lets the body rotate away from the wall.</li>
+                  <li><strong>Three-point, the stable triangle:</strong> two hands and one foot, or two feet and one hand. The free limb is the one that moves.</li>
+                </ul>
+                <ul class="zh">
+                  <li><strong>两点、异侧：</strong>对角的手脚（右手+左脚）更稳，更能顶住把人转离墙的力矩。同侧（左手+左脚）旋转力矩更大，更容易被转出去。</li>
+                  <li><strong>三点、稳定的三角：</strong>两手一脚，或两脚一手。空出来的那只手脚去够下一个点。</li>
+                </ul>
+              </li>
+              <li>
+                <strong class="en">Dynamic flow: moving from one balance to the next</strong>
+                <strong class="zh">前进就是从一个平衡走到下一个</strong>
+                <p class="en">Five seconds before you move:</p>
+                <p class="zh">移动前的五秒，想这三件事：</p>
+                <ul class="en">
+                  <li><strong>Hold direction:</strong> which way does the next hold face? Match the hand to that orientation.</li>
+                  <li><strong>Assess stability:</strong> if you release this hand, is what remains a triangle or an opposite-side pair — or will you rotate off?</li>
+                  <li><strong>Adjust, then execute:</strong> if it would rotate, high-step or switch feet first. Once the feet are set, explode off the legs and use that momentum to catch the next hold.</li>
+                </ul>
+                <ul class="zh">
+                  <li><strong>看开口：</strong>下一个点朝哪开？开口朝右，右手更顺；点在左侧，左手更顺。</li>
+                  <li><strong>松手之前：</strong>松掉这只手之后，剩下的是三角或异侧，还是会被转出去？</li>
+                  <li><strong>调整再动：</strong>若会被转出去，先上高脚或换脚。脚放稳了再蹬，用脚蹬出来的动能和惯性够到下一个点。</li>
+                </ul>
+              </li>
+            </ol>
           </article>
         </div>
       </section>
