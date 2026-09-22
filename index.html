@@ -204,7 +204,7 @@
 
     #basics .board {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1.55fr 0.72fr;
+      grid-template-rows: auto 1.22fr 0.7fr;
       grid-auto-flow: column;
     }
 
@@ -283,14 +283,14 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 2px;
+      justify-content: flex-start;
+      gap: 4px;
       font-size: 11.6px;
       line-height: 1.22;
     }
 
     #basics .cues > li {
-      flex: 1 1 0;
+      flex: 0 0 auto;
       min-height: 0;
       margin: 0;
     }
@@ -298,14 +298,14 @@
     #basics .cue {
       display: grid;
       grid-template-columns: minmax(0, 1.12fr) minmax(108px, 0.88fr);
-      gap: 8px;
-      align-items: center;
-      height: 100%;
+      gap: 6px;
+      align-items: start;
+      height: auto;
     }
 
     #basics .cues.tight .cue {
-      grid-template-columns: minmax(0, 1fr) minmax(140px, 186px);
-      gap: 8px;
+      grid-template-columns: minmax(0, 1fr) minmax(128px, 168px);
+      gap: 6px;
     }
 
     #basics .cues.tight .cue img {
@@ -315,11 +315,11 @@
     #basics .cue img {
       display: block;
       width: 100%;
-      height: 100%;
-      max-height: 128px;
+      height: auto;
+      max-height: 104px;
       min-height: 0;
       object-fit: contain;
-      object-position: center;
+      object-position: center top;
       background: #fff;
     }
 
@@ -327,24 +327,34 @@
 
     #basics .cell.split {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(92px, 0.6fr);
-      gap: 8px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.12fr) minmax(168px, 0.88fr);
+      gap: 10px;
+      align-items: start;
     }
 
     #basics .cell.split .copy {
       min-width: 0;
     }
 
+    #basics .why {
+      font-size: 11.6px;
+      line-height: 1.28;
+    }
+
+    #basics .cell.split .why {
+      font-size: 11.6px;
+      line-height: 1.28;
+    }
+
     #basics .cell.split img {
       display: block;
-      width: auto;
-      height: 118px;
-      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 188px;
       object-fit: contain;
-      object-position: center;
+      object-position: center top;
       background: #fff;
-      justify-self: end;
+      justify-self: stretch;
     }
 
     .pair { margin: 0; }
@@ -730,18 +740,24 @@
         <div class="board">
           <article class="cell">
             <h2><span class="n">2.1</span><span class="en">Getting on the wall: like climbing stairs</span><span class="zh">上墙：像走楼梯</span></h2>
-            <ul class="en">
-              <li><strong>Route selection:</strong> start with the lowest difficulty grade in the gym (e.g., V0–V1).</li>
-              <li><strong>Pre-climb observation:</strong> before pulling on, look at the problem — where it goes and where you will land if you fall. Ensure the landing zone is clear and safe.</li>
-              <li><strong>Core effort:</strong> once on the wall, focus on your feet. Move like walking up stairs, using your legs to push your body up while your hands merely maintain balance and secure your position.</li>
-              <li><strong>Practice descent:</strong> repeatedly practice getting down safely.</li>
-            </ul>
-            <ul class="zh">
-              <li><strong>选线：</strong>从馆里最低难度开始（如 V0–V1）。</li>
-              <li><strong>上墙前观察：</strong>起步前先看清整条线的走向，以及掉了会落在哪。确认落地区域安全、无人在下方逗留。</li>
-              <li><strong>发力核心：</strong>上墙后把注意力放在脚上。像走楼梯一样，用腿把身体推上去，手只负责保持平衡和固定位置。</li>
-              <li><strong>练习下降：</strong>反复练习安全下来。</li>
-            </ul>
+            <ol class="why letters">
+              <li>
+                <strong class="en">Route selection &amp; safety check</strong>
+                <strong class="zh">选线与安全检查</strong>
+                <p class="pair en"><span class="lab">Route:</span>start with the lowest grade (e.g. V0–V1) so you can focus on form, not raw strength.</p>
+                <p class="pair zh"><span class="lab">选线：</span>从最低难度开始（如 V0–V1），先练动作，不拼蛮力。</p>
+                <p class="pair en"><span class="lab">Safety:</span>observe the problem before you pull on. Check the path, and make sure the landing zone is clear and safe.</p>
+                <p class="pair zh"><span class="lab">安全：</span>上手前先看线。看清路线，确认落地区域安全、无人。</p>
+              </li>
+              <li>
+                <strong class="en">Core movement &amp; safe descent</strong>
+                <strong class="zh">核心发力与安全下来</strong>
+                <p class="pair en"><span class="lab">Ascent:</span>focus entirely on your feet. Move like walking up stairs: legs push you up, hands only balance.</p>
+                <p class="pair zh"><span class="lab">上去：</span>注意力全放在脚上。像走楼梯，用腿把身体推上去，手只负责平衡。</p>
+                <p class="pair en"><span class="lab">Descent:</span>practice getting down safely, so controlled downclimbing or dropping becomes a habit.</p>
+                <p class="pair zh"><span class="lab">下来：</span>先练安全下来，养成可控下降或落地的习惯。</p>
+              </li>
+            </ol>
           </article>
 
           <article class="cell">
@@ -814,21 +830,31 @@
           <article class="cell split">
             <div class="copy">
               <h2><span class="n">2.4</span><span class="en">Static balance on the wall</span><span class="zh">墙上的平衡美学</span></h2>
-              <ul class="en">
-                <li><strong>Two-point, opposite side:</strong> diagonal limbs (right hand + left foot) resist the rotation that peels you off. Same-side (left hand + left foot) lets the body rotate away.</li>
-                <li><strong>Three-point, the triangle:</strong> two hands and one foot, or two feet and one hand. The free limb is the one that moves.</li>
-              </ul>
-              <ul class="zh">
-                <li><strong>两点、异侧：</strong>对角的手脚（右手 + 左脚）最稳，顶住把人转离墙的力矩。同侧（左手 + 左脚）更容易被转出去。</li>
-                <li><strong>三点、三角：</strong>两手一脚，或两脚一手。空出来的那一只去够下一个点。</li>
-              </ul>
+              <ol class="why letters">
+                <li>
+                  <strong class="en">Two-point, opposite side — diagonal limbs</strong>
+                  <strong class="zh">两点、异侧：对角手脚</strong>
+                  <p class="pair en">Right hand + left foot (or left + right) form a diagonal axis that resists the rotation peeling you off.</p>
+                  <p class="pair zh">右手 + 左脚（或左手 + 右脚）形成对角轴，顶住把人转离墙的力矩。</p>
+                  <p class="pair en">Same-side limbs (left hand + left foot) lack that cross-body tension, so the body rotates away.</p>
+                  <p class="pair zh">同侧手脚（左手 + 左脚）没有交叉张力，身体更容易被转出去。</p>
+                </li>
+                <li>
+                  <strong class="en">Three-point, the triangle — the acute-angle rule</strong>
+                  <strong class="zh">三点、三角：锐角法则</strong>
+                  <p class="pair en">Two hands and one foot, or two feet and one hand. Only the free limb moves.</p>
+                  <p class="pair zh">两手一脚，或两脚一手。空出来的那一只才去移动。</p>
+                  <p class="pair en">Keep the supporting foot between the two hands (an acute triangle), not lagged off to the side. That parks your centre of mass and stops the swing.</p>
+                  <p class="pair zh">支撑脚尽量落在两手中间（锐角三角形），不要偏到很远的一侧。重心在正中间，才不容易被甩出去。</p>
+                </li>
+              </ol>
             </div>
             <img src="images/opposite-stable.jpg" alt="Same-side contact rotates you off the wall; opposite-side flag stays stable.">
           </article>
 
           <article class="cell">
             <h2><span class="n">2.5</span><span class="en">The physics underneath</span><span class="zh">攀岩的物理底层逻辑</span></h2>
-            <ol class="why letters cues">
+            <ol class="why letters cues tight">
               <li>
                 <div class="cue">
                   <div>
