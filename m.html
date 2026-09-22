@@ -181,17 +181,22 @@
       margin: 0 0 0.4rem;
     }
 
-    .duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 10px;
+    .cues {
+      margin: 0;
     }
 
-    .duo img {
+    .cue {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(96px, 0.8fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cue img {
       width: 100%;
-      height: 148px;
+      height: auto;
       margin-top: 0;
+      max-height: 120px;
       object-fit: contain;
       background: #fff;
     }
@@ -446,61 +451,70 @@
           </article>
 
           <article class="card">
-            <h2><span class="n">2.2</span><span class="en">Why do you get so tired so quickly?</span><span class="zh">为什么这么快就累了</span></h2>
-            <p class="note en">On the ground, our instinct is to “grip tight, pull in, and muscle through.” On a vertical wall, these land-based instincts cause the body to tense up and burn out rapidly.</p>
-            <p class="note zh">在陆地上，我们的直觉是“抓紧、靠拢、用力”。上了垂直的岩壁，这套陆地本能会让身体迅速绷紧、很快耗尽。</p>
-            <ol class="why letters">
+            <h2><span class="n">2.2</span><span class="en">Overcoming ground instincts &amp; body alignment</span><span class="zh">克服陆地直觉与身位纠偏</span></h2>
+            <ol class="why letters cues">
               <li>
-                <strong class="en">Hands aren't for pulling up. Feet are the engine.</strong>
-                <strong class="zh">手不是用来向上拉的，脚才是推进器</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>the first reaction is a pull-up. Forearms pump and the arms go stiff.</p>
-                <p class="pair zh"><span class="lab">The Trap：</span>第一反应是用手臂像引体向上一样硬拉，小臂迅速泵血、发硬。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>the legs are the elevator. Each move is a squat: stand up off a solid foot.</p>
-                <p class="pair zh"><span class="lab">The Fix：</span>双腿是电梯。每一次移动都靠脚踩稳，像深蹲一样把身体推上去。</p>
+                <div class="cue">
+                  <div>
+                    <strong class="en">Edging with toes</strong>
+                    <strong class="zh">脚尖踩点</strong>
+                    <p class="pair en"><span class="lab">The Trap:</span>instinctively flattening the whole sole against the wall, like walking on flat ground — or avoiding small holds out of fear they will slip.</p>
+                    <p class="pair zh"><span class="lab">The Trap：</span>本能地想像走平地一样把整只鞋底贴上墙，或因为怕滑而躲开小点。</p>
+                    <p class="pair en"><span class="lab">The Fix:</span>trust your rubber. Press with the big toe, straight down. Even a thumbnail-sized edge will lock your weight.</p>
+                    <p class="pair zh"><span class="lab">The Fix：</span>信任橡胶。用大脚趾精确往下压；指甲盖大小的沿也能把体重锁住。</p>
+                  </div>
+                  <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
+                </div>
               </li>
               <li>
-                <strong class="en">Hips to the wall, not the chest</strong>
-                <strong class="zh">贴墙的是胯，不是胸口</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>chest and belly flat against the wall like a frog, pulling the gravity outward and straining the arms.</p>
-                <p class="pair zh"><span class="lab">The Trap：</span>胸口和肚子往墙上贴，整个人像只青蛙，把重力往外拉，手臂吃力。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hip so the weight sits over the feet.</p>
-                <p class="pair zh"><span class="lab">The Fix：</span>主动压胯。侧身或开胯，让骨盆靠近岩壁，重心落在脚的正上方。</p>
+                <div class="cue">
+                  <div>
+                    <strong class="en">Keep hips close to the wall</strong>
+                    <strong class="zh">胯贴墙</strong>
+                    <p class="pair en"><span class="lab">The Trap:</span>pressing the chest flat against the wall like a frog, which pulls the centre of gravity outward and strains the arms.</p>
+                    <p class="pair zh"><span class="lab">The Trap：</span>胸口平贴岩壁像只青蛙，把重心往外拉，手臂吃力。</p>
+                    <p class="pair en"><span class="lab">The Fix:</span>press the hips in. Turn sideways or open the hips so the weight sits over the feet, and the upper body can rest.</p>
+                    <p class="pair zh"><span class="lab">The Fix：</span>主动压胯。侧身或开胯，让体重落在脚的正上方，减轻上肢负担。</p>
+                  </div>
+                  <img src="images/hips-close.png" alt="Hips close to the wall: shorter lever, lower hand load.">
+                </div>
               </li>
               <li>
-                <strong class="en">Straight arms beat a bent lock-off</strong>
-                <strong class="zh">打直手臂比曲肘死撑更省力</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>when you are scared you bend the elbows and shrug. The muscles never switch off.</p>
-                <p class="pair zh"><span class="lab">The Trap：</span>害怕时不自觉曲肘、耸肩，肌肉一直处于紧张收缩。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>let the arms hang straight. Let bone and joints take the weight, so muscle can rest.</p>
-                <p class="pair zh"><span class="lab">The Fix：</span>手臂自然下垂打直。用骨骼和关节挂住体重，给肌肉留喘息。</p>
+                <div class="cue">
+                  <div>
+                    <strong class="en">Lower the gravity — sink before you rise</strong>
+                    <strong class="zh">先沉再起</strong>
+                    <p class="pair en"><span class="lab">The Trap:</span>standing tall and stiff to reach higher, which pulls the centre of mass away and opens a huge “open-door” force.</p>
+                    <p class="pair zh"><span class="lab">The Trap：</span>本能地站直绷紧去够高，重心被拉开，产生很大的“开门”力矩。</p>
+                    <p class="pair en"><span class="lab">The Fix:</span>sink before you rise. Drop the hips and bend the knees to shorten the lever, then lock the weight into the feet for a stable launch.</p>
+                    <p class="pair zh"><span class="lab">The Fix：</span>先沉再起。降胯屈膝，缩短力臂，把体重垂直锁进脚里，再稳定起身。</p>
+                  </div>
+                  <img src="images/lower-gravity.png" alt="Drop the hips before you stand up, so the legs can still push.">
+                </div>
               </li>
             </ol>
           </article>
 
           <article class="card">
-            <h2><span class="n">2.3</span><span class="en">Trust your feet and be more relaxed</span><span class="zh">信任脚点，再放松一点</span></h2>
-            <ol class="why letters from-d">
+            <h2><span class="n">2.3</span><span class="en">Anxiety control &amp; tension release</span><span class="zh">克服心理恐慌与身体紧绷</span></h2>
+            <ol class="why letters">
               <li>
-                <strong class="en">Trust a tiny foothold</strong>
-                <strong class="zh">信任微小脚点</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>avoiding small holds or smearing out of fear they will slip.</p>
-                <p class="pair zh"><span class="lab">The Trap：</span>躲开小点，或者拿鞋底去蹭，怕会滑。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>trust your rubber. Precise toe placement with downward pressure will hold your weight.</p>
-                <p class="pair zh"><span class="lab">The Fix：</span>信任橡胶。鞋尖踩准、往下压，就能把体重站住。</p>
+                <strong class="en">The panic grip — death grip</strong>
+                <strong class="zh">死亡抓握</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>squeezing the holds with a death grip out of fear of falling, which instantly burns out the forearms.</p>
+                <p class="pair zh"><span class="lab">The Trap：</span>因为怕掉而死死攥点，小臂立刻泵死。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>match grip to hold quality. Only hold as tight as necessary; relax the fingers whenever you are resting on a secure position.</p>
+                <p class="pair zh"><span class="lab">The Fix：</span>抓力匹配岩点。只抓必要的紧度；在稳点上休息时松开手指。</p>
               </li>
               <li>
-                <strong class="en">Micro-relax</strong>
-                <strong class="zh">瞬间卸力</strong>
-                <p class="pair en"><span class="lab">The Trap:</span>tensing all muscles at once, leading to stiff movements and wasted energy.</p>
-                <p class="pair zh"><span class="lab">The Trap：</span>全身肌肉同时绷紧，动作发僵，白耗体力。</p>
-                <p class="pair en"><span class="lab">The Fix:</span>micro-relax. Shake out on good holds, explode only when moving, and immediately unload.</p>
-                <p class="pair zh"><span class="lab">The Fix：</span>局部放松。好点上甩手，只在移动时爆发，到位立刻卸力。</p>
+                <strong class="en">Conscious breathing rhythm</strong>
+                <strong class="zh">有意识的呼吸节奏</strong>
+                <p class="pair en"><span class="lab">The Trap:</span>tensing every muscle from head to toe, locking up the breath and the body’s flow.</p>
+                <p class="pair zh"><span class="lab">The Trap：</span>从头到脚每块肌肉都绷着，呼吸和动作一起锁死。</p>
+                <p class="pair en"><span class="lab">The Fix:</span>reset with a breath. Use an intentional exhale to drop the shoulders, shake out one arm at a time, and reset your focus.</p>
+                <p class="pair zh"><span class="lab">The Fix：</span>用呼吸重置。主动呼气放下肩膀，一次甩一只手，把注意力拉回来。</p>
               </li>
             </ol>
-            <div class="duo">
-              <img src="images/toes-edging.png" alt="Edging with toes: press the toe onto the hold, not the arch.">
-              <img src="images/lower-gravity.png" alt="Drop the hips so the legs can still push.">
-            </div>
           </article>
 
           <article class="card split">
@@ -564,10 +578,6 @@
               <li><strong>松手之后：</strong>剩下的是三角或异侧，还是会被转出去？</li>
               <li><strong>调整再动：</strong>若会被转出去，先上高脚或换脚。脚放稳了再蹬，够到下一个点。</li>
             </ul>
-            <div class="duo">
-              <img src="images/hips-close.jpg" alt="Keep the hips close to the wall so the feet take the weight.">
-              <img src="images/dynamic-move.jpg" alt="Reach with the whole body turning, not by pulling with the arms alone.">
-            </div>
           </article>
     </section>
 
